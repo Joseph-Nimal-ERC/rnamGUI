@@ -5,6 +5,14 @@
   padding: 0.2em 0;
 }
 
+a {font-size: 18px;
+text-decoration-style: solid;
+font-weight: bold;
+text-align: justify;
+text-transform: uppercase;
+text-shadow: 4px 4px black;
+color: red;}
+
 .myGrid {
     width: 1000px;
     height: 275px;
@@ -25,6 +33,13 @@
 
 .orange {
   background-color: orange;
+}
+
+.navbar-brand{
+  font-size: 22px;
+  text-decoration-style: solid;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .navbar-default{
