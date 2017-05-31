@@ -72,8 +72,9 @@ angular.module('rnaminventoryApp')
 
     projectsService.getProjectsUtilization()
         .then(function (response) {
-                proj.gridOptions.columnDefs = projectsClientService.getColumnDefs(response.data[0]);
-                proj.gridOptions.data = response.data;
+                var gridData = projectsClientService.getUtilGridData(response.data);
+                proj.gridOptions.columnDefs = projectsClientService.getColumnDefs(gridData[0]);
+                proj.gridOptions.data = gridData;
             }, function (error) {
                 console.log('Unable to load project utilization data: ' + error.message);
             });
