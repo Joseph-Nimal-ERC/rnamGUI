@@ -42,10 +42,23 @@
           </tr>
           </table>
       </div>
+      <br>
   <div >
       <button class="btn btn-primary btnCustom" ng-click="proj.save()">Save</button>
       <button class="btn btn-primary btnCustom" ng-click="proj.reset()">Reset</button>
+      <button class="btn btn-primary btnCustom" ng-click="proj.cancel()">Cancel</button>
   </div>
 </form>
 <br>
+<div>
+	  <span style="font-weight:bold;"> Start Date :&nbsp</span>
+	  <input type="month" id="month" format="dd/MM/yyyy" ng-model="proj.Startdatevalue"  style="text-align: center; text-transform: uppercase;"/>
+	  <span style="font-weight:bold;"> End Date :&nbsp</span>
+	 	<input type="month" id="month" ng-model="proj.Enddatevalue" style="text-align: center; text-transform: uppercase;"/>
+	 	<input type="Submit" id="Go" value="Go" ng-click="proj.evaluateDate()" style="text-align: center; text-transform: uppercase;"/>
+</div>
+<br>
+<button ng-show="proj.enablebutton" class="btn btn-primary btnCustom" ng-click="proj.edit()">Edit</button>
+<button ng-show="proj.enableShow" class="btn btn-primary btnCustom" ng-click="proj.show()">Show Details</button>
+<br><br>
 <div id="grid1" ng-if="proj.gridOptions.data" ui-grid="proj.gridOptions" ui-grid-edit ui-grid-pinning ui-grid-selection ui-grid-exporter class="myGrid"></div>

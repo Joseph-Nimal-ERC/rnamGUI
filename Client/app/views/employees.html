@@ -37,12 +37,23 @@
 </tr>
   </table>
   </div>
-	    <button class="btn btn-primary btnCustom" ng-click="ok()">OK</button>
-	    <button class="btn btn-primary btnCustom" ng-click="emp.cancel()">Cancel</button><div>
-  	
+  <br>
+	<div>
+  	<button class="btn btn-primary btnCustom" ng-click="emp.save()">Save</button>
+  	<button class="btn btn-primary btnCustom" ng-click="emp.reset()">Reset</button>
+	<button class="btn btn-primary btnCustom" ng-click="emp.cancel()">Cancel</button>
   </div>
-</form> 
+</form>
+<br>
+<div>
+	  <span style="font-weight:bold;"> Start Date :&nbsp</span>
+	  <input type="month" id="month" format="dd/MM/yyyy" ng-model="proj.Startdatevalue"  style="text-align: center; text-transform: uppercase;"/>
+	  <span style="font-weight:bold;"> End Date :&nbsp</span>
+	 	<input type="month" id="month" ng-model="proj.Enddatevalue" style="text-align: center; text-transform: uppercase;"/>
+	 	<input type="Submit" id="Go" value="Go" ng-click="proj.evaluateDate()" style="text-align: center; text-transform: uppercase;"/>
+</div>
 <br>
 <button ng-show="emp.enablebutton" class="btn btn-primary btnCustom" ng-click="emp.edit()">Edit</button>
 <button ng-show="emp.enableShow" class="btn btn-primary btnCustom" ng-click="emp.show()">Show Details</button>
+<br><br>
 <div ui-grid=emp.gridOptions class="myGrid" ui-grid-resize-columns ui-grid-move-columns ui-grid-pinning ui-grid-auto-resize ui-grid-pagination ui-grid-selection ui-grid-move-columns ui-grid-edit></div>
