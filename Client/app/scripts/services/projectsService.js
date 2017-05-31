@@ -14,6 +14,10 @@ angular.module('rnaminventoryApp')
       return $http.get('../projUtil.json');
    };
 
+   this.getReference = function() {
+      return $http.get('../reference.json');
+   };
+
    this.saveProject = function(data) {
       return $http.post('http://localhost:3000/project', data);
    };

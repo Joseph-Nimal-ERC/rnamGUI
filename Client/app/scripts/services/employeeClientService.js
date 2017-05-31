@@ -8,9 +8,14 @@ angular.module('rnaminventoryApp')
     var result = [];
     result.push(
     { 
+            'field': 'name',
+            'name': 'name',
+              'enableCellEdit' : false,
+            'minWidth': 50
+          },
+          { 
             'field': 'signum',
             'name': 'signum',
-            'enableFiltering': false,
               'enableCellEdit' : false,
             'minWidth': 50
           }

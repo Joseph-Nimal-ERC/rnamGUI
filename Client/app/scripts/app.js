@@ -25,7 +25,7 @@ angular
     'ui.grid.autoResize',
     'ui.grid.pagination'
   ])
-  .config(function ($routeProvider,$locationProvider ) {
+  .config(function ($routeProvider,$locationProvider) {
 
   $locationProvider.hashPrefix(''); 
     $routeProvider

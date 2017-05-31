@@ -1,22 +1,64 @@
-	<form ng-show="proj.formVisibility" ng-submit="">
-	<div class="text_div">
-			<span style="font-weight:bold;"> Project Name :&nbsp</span><input type="text" class="text_style" ng-model="proj.formData.projects"></span> &nbsp
-			<span style="font-weight:bold;"> Prob of Deal (%):&nbsp</span><input type="text" ng-model="proj.formData.prob_of_deal">
-	<br><br>&nbsp
-		<span style="font-weight:bold;"> RNAM Mgr :&nbsp</span><input type="text" ng-model="proj.formData.rnam_manager">
-		<span style="font-weight:bold;"> RNAM Director :&nbsp</span><input type="text" ng-model="proj.formData.rnam_director">
-</br><br>&nbsp
-	<span style="font-weight:bold;"> Remarks :&nbsp&nbsp</span><textarea  ng-model="proj.formData.status_desc"/>&nbsp
-	<span style="font-weight:bold;"> Status :&nbsp</span><input type="text" ng-model="proj.formData.status">
+<form ng-show="proj.formVisibility" ng-submit="">
+  <div class="text_div">
+<table class="projForm" cellspacing="10">
+      <tr>
+          <td><span style="font-weight:bold;"> Project Name :&nbsp</span></td>
+          <td><input type="text" class="text_style" ng-model="proj.formData.projects" style="text-align: center;"></td>
+      </tr>
+      <tr>
+      	  <td><span style="font-weight:bold;"> Prob of Deal :&nbsp</span></td>
+          <td><input type="text" ng-model="proj.formData.prob_of_deal"></td>
+      </tr>
+      <tr>
+          <td><span style="font-weight:bold;"> RNAM Mgr :&nbsp</span></td>
+          <td><select ng-model="managerList" ng-options="x for x in proj.managerList" selected = "proj.formData.rnam_manager" style="width: 174px; height: 25px"></td>
+          </tr>
+      <tr>
+          <td><span style="font-weight:bold;"> RNAM Director :&nbsp</span></td>
+          <td><select ng-model="directorList" ng-options="x for x in proj.directorList" selected = "proj.formData.rnam_director" style="width: 174px; height: 25px"></td>
+          </tr>
+      <tr>
+          <td><span style="font-weight:bold;"> Status :&nbsp</span></td>
+          <td><input type="text" ng-model="proj.formData.status" style="text-align: center;"></td>
+          </tr>
+      <tr>
+          <td><span style="font-weight:bold;"> EGI Staffing :&nbsp</span></td>
+          <td><input type="text" ng-model="proj.formData.egi_staffing" style="text-align: center;"></td>
+          </tr>
+      <tr>
+          <td><span style="font-weight:bold;"> Start Date:&nbsp</span></td>
+          <td><input type="datetime" ng-model="proj.formData.start_date"></td>
+          </tr>
+      <tr>
+          <td><span style="font-weight:bold;"> End Date:&nbsp</span></td>
+          <td><input type="datetime" ng-model="proj.formData.end_date"></td>
+          </tr>
+      <tr>
+      </table>
+      <table class="projForm">
+      <tr>
+          <td><span style="font-weight:bold;"> Remarks :&nbsp</span></td>
+          <td><textarea  rows="10" cols="25" ng-model="proj.formData.status_desc" style="text-align: justify-all;"></textarea></td>
+          </tr>
+          </table>
+      </div>
+      <br>
+  <div >
+      <button class="btn btn-primary btnCustom" ng-click="proj.save()">Save</button>
+      <button class="btn btn-primary btnCustom" ng-click="proj.reset()">Reset</button>
+      <button class="btn btn-primary btnCustom" ng-click="proj.cancel()">Cancel</button>
+  </div>
+</form>
+<br>
+<div>
+	  <span style="font-weight:bold;"> Start Date :&nbsp</span>
+	  <input type="month" id="month" format="dd/MM/yyyy" ng-model="proj.Startdatevalue"  style="text-align: center; text-transform: uppercase;"/>
+	  <span style="font-weight:bold;"> End Date :&nbsp</span>
+	 	<input type="month" id="month" ng-model="proj.Enddatevalue" style="text-align: center; text-transform: uppercase;"/>
+	 	<input type="Submit" id="Go" value="Go" ng-click="proj.evaluateDate()" style="text-align: center; text-transform: uppercase;"/>
+</div>
+<br>
+<button ng-show="proj.enablebutton" class="btn btn-primary btnCustom" ng-click="proj.edit()">Edit</button>
+<button ng-show="proj.enableShow" class="btn btn-primary btnCustom" ng-click="proj.show()">Show Details</button>
 <br><br>
-	<span style="font-weight:bold;"> EGI Staffing :&nbsp&nbsp</span><input type="text" ng-model="proj.formData.egi_staffing">
-<br><br>
-		<span style="font-weight:bold;">  Start Date:&nbsp</span><input type="datetime" ng-model="proj.formData.start_date">
-		<span style="font-weight:bold;">End Date:&nbsp</span><input type="datetime" ng-model="proj.formData.end_date">
-</div>&nbsp
-	<div >
-	    <button class="btn btn-primary btnCustom" ng-click="proj.save()">Save</button>
-	    <button class="btn btn-primary btnCustom" ng-click="proj.reset()">Reset</button>
-	</div>
-</form>&nbsp
 <div id="grid1" ng-if="proj.gridOptions.data" ui-grid="proj.gridOptions" ui-grid-edit ui-grid-pinning ui-grid-selection ui-grid-exporter class="myGrid"></div>

@@ -4,6 +4,8 @@ angular.module('rnaminventoryApp')
   .controller('ProjectsCtrl',['projectsService', 'projectsClientService', 'uiGridConstants', function (projectsService, projectsClientService, uiGridConstants) {
     console.log('projects');
     var proj = this;
+    proj.enablebutton = false;
+    proj.enableShow= false;
     proj.origFormData = {};
     proj.formVisibility = false;
     proj.formData = {};
@@ -32,7 +34,8 @@ angular.module('rnaminventoryApp')
         onRegisterApi: function(gridApi){
           proj.gridApi = gridApi;
           gridApi.selection.on.rowSelectionChanged(null, function(row){
-              proj.formVisibility = true;
+              proj.enablebutton = true;
+              proj.enableShow= true;
               
             projectsService.getProjectById(row.entity.projId)
               .then(function(response){
@@ -65,6 +68,15 @@ angular.module('rnaminventoryApp')
           });
         });
     };
+
+    proj.show=function(){
+            proj.formVisibility = true;
+          };
+
+    proj.cancel=function(){
+            proj.formVisibility = false;
+          };
+
     proj.toggleFiltering = function(){
       proj.gridOptions.enableFiltering = !proj.gridOptions.enableFiltering;
       proj.gridApi.core.notifyDataChange( uiGridConstants.dataChange.COLUMN );
@@ -72,8 +84,18 @@ angular.module('rnaminventoryApp')
 
     projectsService.getProjectsUtilization()
         .then(function (response) {
-                proj.gridOptions.columnDefs = projectsClientService.getColumnDefs(response.data[0]);
-                proj.gridOptions.data = response.data;
+                var gridData = projectsClientService.getUtilGridData(response.data);
+                proj.gridOptions.columnDefs = projectsClientService.getColumnDefs(gridData[0]);
+                proj.gridOptions.data = gridData;
+            }, function (error) {
+                console.log('Unable to load project utilization data: ' + error.message);
+            });
+
+        projectsService.getReference()
+        .then(function (response) {
+                proj.managerList = response.data.managerList;
+                proj.directorList = response.data.directorList;
+                proj.egiLM = response.data.egiLM;
             }, function (error) {
                 console.log('Unable to load project utilization data: ' + error.message);
             });
