@@ -1,0 +1,269 @@
+[{
+    "projId" : "5927160f15ff2323a44f30a5",
+    "projName" : "Charter-EXPO",
+    "start_dt" : "2016-05-01",
+    "end_dt" : " 2018-05-31",
+    "needGapDtls" : 
+        [{
+		"year" : "2016",
+           "months" :
+		   {
+		   
+            "May_Need" : "",
+            "May_Gap" : "",
+            "Jun_Need" : "",
+            "Jun_Gap" : "",
+            "Jul_Need" : "",
+            "Jul_Gap" : "",
+            "Aug_Need" : "",
+            "Aug_Gap" : "",
+            "Sep_Need" : "",
+            "Sep_Gap" : "",
+            "Oct_Need" : "",
+            "Oct_Gap" : "",
+            "Nov_Need" : "",
+            "Nov_Gap" : "",
+            "Dec_Need" : "",
+            "Dec_Gap" : "",
+            "Jan_Need" : "5",
+            "Jan_Gap" : "-1",
+            "Feb_Need" : "",
+            "Feb_Gap" : "",
+            "Mar_Need" : "",
+            "Mar_Gap" : "",
+            "Apr_Need" : "",
+            "Apr_Gap" : ""
+			}
+        }
+    ]
+},
+{
+    "projId" : "592715df15ff2323a44f30a4",
+    "projName" : "CTL",
+    "start_dt" : "2017-03-01",
+    "end_dt" : " 2018-05-31",
+    "needGapDtls" : 
+        [{
+        "year" : "2016",
+           "months" :
+           {
+            "May_Need" : "",
+            "May_Gap" : "",
+            "Jun_Need" : "",
+            "Jun_Gap" : "",
+            "Jul_Need" : "2",
+            "Jul_Gap" : "0",
+            "Aug_Need" : "",
+            "Aug_Gap" : "",
+            "Sep_Need" : "",
+            "Sep_Gap" : "",
+            "Oct_Need" : "2",
+            "Oct_Gap" : "0",
+            "Nov_Need" : "3",
+            "Nov_Gap" : "-3",
+            "Dec_Need" : "",
+            "Dec_Gap" : "",
+            "Jan_Need" : "3",
+            "Jan_Gap" : "0",
+            "Feb_Need" : "",
+            "Feb_Gap" : "",
+            "Mar_Need" : "",
+            "Mar_Gap" : "",
+            "Apr_Need" : "3",
+            "Apr_Gap" : "1"
+            }
+        }]
+    
+},
+{
+    "projId" : "592716ba15ff2323a44f30a6",
+    "projName" : "Charter - MVNE",
+    "start_dt" : "2017-03-01",
+    "end_dt" : " 2018-05-31",
+    "needGapDtls" : 
+        [{
+        "year" : "2016",
+           "months" :
+           {
+            "May_Need" : "",
+            "May_Gap" : "",
+            "Jun_Need" : "",
+            "Jun_Gap" : "",
+            "Jul_Need" : "8",
+            "Jul_Gap" : "-1",
+            "Aug_Need" : "",
+            "Aug_Gap" : "",
+            "Sep_Need" : "",
+            "Sep_Gap" : "",
+            "Oct_Need" : "",
+            "Oct_Gap" : "",
+            "Nov_Need" : "",
+            "Nov_Gap" : "",
+            "Dec_Need" : "",
+            "Dec_Gap" : "",
+            "Jan_Need" : "5",
+            "Jan_Gap" : "0",
+            "Feb_Need" : "",
+            "Feb_Gap" : "",
+            "Mar_Need" : "",
+            "Mar_Gap" : "",
+            "Apr_Need" : "3",
+            "Apr_Gap" : "1"
+            }
+        }
+    ]
+},
+{
+    "projId" : "592716ba15ff2323a44f3",
+    "projName" : "Entel Chile",
+    "start_dt" : "2017-03-09",
+    "end_dt" : " 2020-03-31",
+    "needGapDtls" : 
+        [{
+        "year" : "2017",
+           "months" :
+           {
+            "May_Need" : "",
+            "May_Gap" : "",
+            "Jun_Need" : "5",
+            "Jun_Gap" : "5",
+            "Jul_Need" : "1",
+            "Jul_Gap" : "0",
+            "Aug_Need" : "3",
+            "Aug_Gap" : "-1",
+            "Sep_Need" : "",
+            "Sep_Gap" : "",
+            "Oct_Need" : "",
+            "Oct_Gap" : "",
+            "Nov_Need" : "10",
+            "Nov_Gap" : "-1",
+            "Dec_Need" : "",
+            "Dec_Gap" : "",
+            "Jan_Need" : "15",
+            "Jan_Gap" : "0",
+            "Feb_Need" : "",
+            "Feb_Gap" : "",
+            "Mar_Need" : "",
+            "Mar_Gap" : "",
+            "Apr_Need" : "4",
+            "Apr_Gap" : "0"
+            }
+        }
+    ]
+},
+{
+    "projId" : "592716ba15ff2323a44",
+    "projName" : "Sprint NIMS",
+    "start_dt" : "2017-01-06",
+    "end_dt" : " 2019-03-31",
+    "needGapDtls" : 
+        [{
+        "year" : "2017",
+           "months" :
+           {
+            "May_Need" : "",
+            "May_Gap" : "",
+            "Jun_Need" : "2",
+            "Jun_Gap" : "5",
+            "Jul_Need" : "1",
+            "Jul_Gap" : "",
+            "Aug_Need" : "",
+            "Aug_Gap" : "",
+            "Sep_Need" : "",
+            "Sep_Gap" : "",
+            "Oct_Need" : "",
+            "Oct_Gap" : "",
+            "Nov_Need" : "6",
+            "Nov_Gap" : "-6",
+            "Dec_Need" : "",
+            "Dec_Gap" : "",
+            "Jan_Need" : "25",
+            "Jan_Gap" : "0",
+            "Feb_Need" : "15",
+            "Feb_Gap" : "-1",
+            "Mar_Need" : "",
+            "Mar_Gap" : "",
+            "Apr_Need" : "2",
+            "Apr_Gap" : "0"
+            }
+        }
+    ]
+},
+
+{
+    "projId" : "592716ba15ff2323a4",
+    "projName" : "BOGOLOGO",
+    "start_dt" : "2016-02-04",
+    "end_dt" : " 2018-08-31",
+    "needGapDtls" : 
+        [{
+        "year" : "2017",
+           "months" :
+           {
+            "May_Need" : "6",
+            "May_Gap" : "0",
+            "Jun_Need" : "2",
+            "Jun_Gap" : "5",
+            "Jul_Need" : "1",
+            "Jul_Gap" : "0",
+            "Aug_Need" : "13",
+            "Aug_Gap" : "0",
+            "Sep_Need" : "12",
+            "Sep_Gap" : "0",
+            "Oct_Need" : "",
+            "Oct_Gap" : "",
+            "Nov_Need" : "8",
+            "Nov_Gap" : "-2",
+            "Dec_Need" : "",
+            "Dec_Gap" : "",
+            "Jan_Need" : "",
+            "Jan_Gap" : "",
+            "Feb_Need" : "1",
+            "Feb_Gap" : "-1",
+            "Mar_Need" : "",
+            "Mar_Gap" : "",
+            "Apr_Need" : "",
+            "Apr_Gap" : ""
+            }
+        }
+    ]
+},
+{
+    "projId" : "592716ba15ff2323a4",
+    "projName" : "OTech",
+    "start_dt" : "2017-09-15",
+    "end_dt" : " 2018-08-31",
+    "needGapDtls" : 
+        [{
+        "year" : "2017",
+           "months" :
+           {
+            "May_Need" : "",
+            "May_Gap" : "",
+            "Jun_Need" : "",
+            "Jun_Gap" : "",
+            "Jul_Need" : "3",
+            "Jul_Gap" : "0",
+            "Aug_Need" : "1",
+            "Aug_Gap" : "-1",
+            "Sep_Need" : "1",
+            "Sep_Gap" : "0",
+            "Oct_Need" : "",
+            "Oct_Gap" : "",
+            "Nov_Need" : "",
+            "Nov_Gap" : "",
+            "Dec_Need" : "",
+            "Dec_Gap" : "",
+            "Jan_Need" : "",
+            "Jan_Gap" : "",
+            "Feb_Need" : "",
+            "Feb_Gap" : "",
+            "Mar_Need" : "",
+            "Mar_Gap" : "",
+            "Apr_Need" : "",
+            "Apr_Gap" : ""
+            }
+        }
+    ]
+}
+]
