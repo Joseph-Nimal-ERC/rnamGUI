@@ -1,0 +1,19 @@
+{
+ "_id" : "591ece43836b4924bae18221",
+ "region" : "RNAM",
+ "managerList" :[ 
+        "Antony", 
+        "Bell", 
+        "Ram"
+    ],
+	"directorList" :[
+	 "Zahid", 
+     "Zolo", 
+     "Zaheer"
+	],
+	"egiLM" :[
+	"Kiran",
+	"Ranjeet"
+	]
+	
+}
