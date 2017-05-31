@@ -49,7 +49,7 @@ router.post('/', function(req, res, next) {
 				return next(err);
 		});
 	}	
-	 res.json({message : 'Project Utilization record(s) updated Successfully'});
+	 res.json({message : 'Project Utilization record(s) added Successfully'});
 });
 
 /* Update existing Project utilization entry */
