@@ -78,6 +78,15 @@ angular.module('rnaminventoryApp')
             }, function (error) {
                 console.log('Unable to load project utilization data: ' + error.message);
             });
+
+        projectsService.getReference()
+        .then(function (response) {
+                proj.managerList = response.data.managerList;
+                proj.directorList = response.data.directorList;
+                proj.egiLM = response.data.egiLM;
+            }, function (error) {
+                console.log('Unable to load project utilization data: ' + error.message);
+            });
         proj.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
