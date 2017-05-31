@@ -42,20 +42,26 @@ router.get('/getUtilizationForYear/:year', function(req, res, next) {
 
 /* Create new Project utilization entry */
 router.post('/', function(req, res, next) {
-  ProjUtilization.create(req.body, function (err, projUtilization) {
-    if (err) return next(err);
-    res.json({message : 'Project Utilization record added Successfully'});
-  });
+	for(var key in req.body){
+		var reqBody = req.body[key];
+		ProjUtilization.create(reqBody, function (err, projUtilization) {
+			if (err) 
+				return next(err);
+		});
+	}	
+	 res.json({message : 'Project Utilization record(s) updated Successfully'});
 });
 
 /* Update existing Project utilization entry */
 router.put('/', function(req, res, next) {
-	console.log({message : 'entered console log - '});
-  ProjUtilization.findOneAndUpdate({_id : req.body._id}, req.body, function (err, projUtilization) {
-	  console.log('entered update function');
-    if (err) return next(err);
-    res.json({message : 'Project Utilization record updated Successfully'});
-  });
+	for(var key in req.body){
+		var reqBody = req.body[key];
+		ProjUtilization.findByIdAndUpdate({_id : reqBody._id}, reqBody, function(err, projUtilization){
+			if (err) 
+				return next(err);
+		});
+	}
+	 res.json({message : 'Project Utilization record(s) updated Successfully'});
 });
 
 /* Delete an Project utilization entry */

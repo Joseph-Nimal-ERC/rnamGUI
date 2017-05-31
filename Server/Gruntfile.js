@@ -30,7 +30,8 @@ module.exports = function(grunt) {
         },
 
         jshint: {
-            all: ['Gruntfile.js','src/app.js', 'src/models/*.js', 'src/routes/*.js']
+            all: ['Gruntfile.js','src/app.js', 'src/models/*.js', 'src/routes/*.js'],
+	    loopfunc : true
 
         }
         
