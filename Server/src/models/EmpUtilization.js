@@ -9,20 +9,22 @@ var EmpUtilizationScehma = new mongoose.Schema({
   status: String,
   mapping_dtls: [ 
   {
-	year: String,
+	year: Number,
+	CurrentProject : String,
+	Status : String,
 	  months : 
 	  {
-		  Jan : String,
-		  Feb : String,
-		  Mar : String,
-		  Apr : String,
-		  Jun : String,
-		  Jul : String,
-		  Aug : String,
-		  Sep : String,
-		  Oct : String,
-		  Nov : String,
-		  Dec : String
+		  Jan : Number,
+		  Feb : Number,
+		  Mar : Number,
+		  Apr : Number,
+		  Jun : Number,
+		  Jul : Number,
+		  Aug : Number,
+		  Sep : Number,
+		  Oct : Number,
+		  Nov : Number,
+		  Dec : Number
 	  }
   }
   ],

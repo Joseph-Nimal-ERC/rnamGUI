@@ -22,8 +22,10 @@ router.get('/:id', function(req, res, next) {
 /* Create new project entry */
 router.post('/', function(req, res, next) {
   Project.create(req.body, function (err, project) {
-    if (err) return next(err);
-    res.json({message : 'Project record added Successfully'});
+    if (err) 
+		return next(err);
+    else 
+		res.json(project);
   });
 });
 
