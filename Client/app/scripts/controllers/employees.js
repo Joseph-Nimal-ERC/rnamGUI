@@ -51,6 +51,8 @@ angular.module('rnaminventoryApp')
               emp.gridOptions.multiSelect= true; 
               emp.gridOptions.enableGridMenu= true;
               emp.gridOptions.enableCellEdit=false;
+              emp.gridOptions.enableCellEditOnFocus= true;
+              emp.gridOptions.enableFiltering = true;
 
 
                  emp.gridOptions.onRegisterApi = function (gridApi) {
