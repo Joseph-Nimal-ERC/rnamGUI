@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 Schema = mongoose.Schema;
 var ProjUtilizationScehma = new mongoose.Schema({
   projName: String,
-  need_Gap_dtls: [
+  needGapDtls: [
   {
 	 year: Number,
 	  months : {

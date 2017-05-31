@@ -16,8 +16,7 @@ angular.module('rnaminventoryApp')
             'enableHiding': false
         }
 		);
-		
-			for(var key in data.months){
+		for(var key in data.months){
 				var fieldName = 'months.'.concat(key);
 				result.push(
 				{ 
@@ -29,17 +28,16 @@ angular.module('rnaminventoryApp')
 				    'cellClass' : 'red'
 		        }
 				);
-		   	};
-	   
+		   	}
 	   	return result;
 	};
 	this.getUtilGridData = function(data){
 		var result = [];
 		data.forEach(function(item){
 			var row = {};
-			row['projId'] = item.projId;
-			row['projName'] = item.projName;
-			row['months'] = {};
+			row.projId = item.projId;
+			row.projName = item.projName;
+			row.months = {};
 			item.needGapDtls.forEach(function(needGap){
 				for(var key in needGap.months){
 					var name = needGap.year.concat(' ').concat(key);
@@ -59,11 +57,11 @@ angular.module('rnaminventoryApp')
 			newGap = parseInt(oldGap)-parseInt(needDif);
 		}
 		else {
-			newGap = 0-parseInt(needDif)
+			newGap = 0-parseInt(needDif);
 		}
 		rowEntity.needGapDtls.months[gap] = newGap;
 		var index = _.findIndex(data, {'projId' : rowEntity.projId});
 		data.splice(index, 1, rowEntity);
 		 return data;
-	}
+	};
 }]);

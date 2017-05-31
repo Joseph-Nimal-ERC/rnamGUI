@@ -43,10 +43,10 @@ angular.module('rnaminventoryApp')
                 console.log('Unable to load project data: ' + error.message);
               });
           });
-          gridApi.edit.on.afterCellEdit(null,function(rowEntity, colDef, newValue, oldValue,row,col){
+          gridApi.edit.on.afterCellEdit(null,function(rowEntity, colDef, newValue, oldValue){
             var newNeed = newValue-oldValue;
             proj.gridOptions.data = projectsClientService.getGapData(proj.gridOptions.data, rowEntity,colDef,newNeed);
-          })
+          });
         }
     };
 
