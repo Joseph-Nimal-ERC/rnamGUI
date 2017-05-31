@@ -1,0 +1,152 @@
+[{
+    "signum" : "ezabeei",
+    "name" : "Gautham",
+    "approvedbyRNAMOSS" : "Yes",
+    "CU"  : "CTL",
+    "location" : "Chennai",
+    "status" : "Committed",
+    "currentProjName" : "Charter-EXPO",
+    "currProjId" : "342342",
+    "Mapping_dtls" : [ 
+        {
+        "Year" : "2016",
+         "months" : 
+            {
+            "Jan" : "1.0",
+            "Feb" : "",
+            "Mar" : "",
+            "Apr" : "",
+            "May" : "1.0",
+            "Jun" : "",
+            "Jul" : "",
+            "Aug" : "",
+            "Sep" : "",
+            "Oct" : "",
+            "Nov" : "",
+            "Dec" : ""
+            }
+        }
+    ]
+},
+{
+    "signum" : "ejknopm",
+    "name" : "Ramya",
+    "approvedbyRNAMOSS" : "Yes",
+    "CU"  : "CTL",
+    "location" : "Bangalore",
+    "status" : "Committed",
+    "currentProjName" : "TMO NSM",
+    "currProjId" : "342342",
+    "Mapping_dtls" : [ 
+        {
+        "Year" : "2016",
+         "months" : 
+            {
+            "Jan" : "1.0",
+            "Feb" : "",
+            "Mar" : "1.0",
+            "Apr" : "",
+            "May" : "1.0",
+            "Jun" : "",
+            "Jul" : "",
+            "Aug" : "",
+            "Sep" : "1.0",
+            "Oct" : "1.0",
+            "Nov" : "",
+            "Dec" : ""
+            }
+        }
+    ]
+},
+{
+    "signum" : "eredtha",
+    "name" : "Tharun",
+    "approvedbyRNAMOSS" : "Yes",
+    "CU"  : "REM",
+    "location" : "Chennai",
+    "status" : "Committed",
+    "currentProjName" : "BMC Remedy",
+    "currProjId" : "342342",
+    "Mapping_dtls" : [ 
+        {
+        "Year" : "2016",
+         "months" : 
+            {
+            "Jan" : "1.0",
+            "Feb" : "",
+            "Mar" : "1.0",
+            "Apr" : "",
+            "May" : "1.0",
+            "Jun" : "",
+            "Jul" : "1.0",
+            "Aug" : "1.0",
+            "Sep" : "1.0",
+            "Oct" : "",
+            "Nov" : "",
+            "Dec" : ""
+            }
+        }
+    ]
+},
+{
+    "signum" : "erubtha",
+    "name" : "Rubala",
+    "approvedbyRNAMOSS" : "Yes",
+    "CU"  : "CTL",
+    "location" : "Chennai",
+    "status" : "Committed",
+    "currentProjName" : "Centurylink",
+    "currProjId" : "342342",
+    "Mapping_dtls" : [ 
+        {
+        "Year" : "2016",
+         "months" : 
+            {
+            "Jan" : "1.0",
+            "Feb" : "1.0",
+            "Mar" : "",
+            "Apr" : "1.0",
+            "May" : "1.0",
+            "Jun" : "",
+            "Jul" : "1.0",
+            "Aug" : "1.0",
+            "Sep" : "",
+            "Oct" : "",
+            "Nov" : "",
+            "Dec" : ""
+            }
+        }
+    ]
+},
+{
+    "signum" : "ezabeei",
+    "name" : "Gautham",
+    "approvedbyRNAMOSS" : "Yes",
+    "CU"  : "CTL",
+    "location" : "Chennai",
+    "status" : "Committed",
+    "currentProjName" : "Charter-EXPO",
+    "currProjId" : "342342",
+    "Mapping_dtls" : [ 
+        {
+        "Year" : "2016",
+         "months" : 
+            {
+            "Jan" : "1.0",
+            "Feb" : "",
+            "Mar" : "",
+            "Apr" : "",
+            "May" : "1.0",
+            "Jun" : "",
+            "Jul" : "",
+            "Aug" : "",
+            "Sep" : "",
+            "Oct" : "",
+            "Nov" : "",
+            "Dec" : ""
+            }
+        }
+    ]
+}
+]
+ 
