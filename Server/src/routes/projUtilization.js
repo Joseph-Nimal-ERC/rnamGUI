@@ -32,19 +32,20 @@ router.get('/', function(req, res, next) {
   var year = req.query.year;
   var month = req.query.month;
   var need = req.query.need;
-  var gap = 0;
+  var allocatedResources = 0;
   var monthTagName = 'mapping_dtls.months.'+ month;
-  EmpUtilization.find({'mapping_dtls.currentProject' : projectId, 'mapping_dtls.year' : year}).where(monthTagName).equals(1.0).exec(function (err, empUtilization) {
+  console.log('inside gap');
+  EmpUtilization.find({'mapping_dtls.projId' : projectId, 'mapping_dtls.year' : year, 'mapping_dtls.Status' : 'Committed'}).where(monthTagName).equals(1.0).exec(function (err, empUtilization) {
     if (err) return next(err);
 	if(!empUtilization)
-		res.json({message : 'No details found for the Project'});
+		res.json({GAP : -(need)});
 	else{
 		empUtilization.forEach(function(empUtilRecord){
-			gap = gap + 1;
-			console.log(gap);
+			allocatedResources = allocatedResources + 1;
+			console.log(allocatedResources);
 		});
-		console.log('final gap : ' + (need-gap));
-		res.json({GAP : (need-gap)});
+		console.log('final gap : ' + (need-allocatedResources));
+		res.json({GAP : -(need-allocatedResources)});
 	}
   });
 });
