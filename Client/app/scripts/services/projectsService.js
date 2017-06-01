@@ -12,7 +12,7 @@ angular.module('rnaminventoryApp')
 
    this.getProjectsUtilization = function() {
     //  return $http.get('../projUtil.json');
-      return $http.get('http://localhost:3000/projUtilization/getProjectsUtilization');
+      return $http.get('http://localhost:3000/projUtilization/getAllProjectUtilization');
    };
 
    this.saveProjectsUtilization = function(data) {
