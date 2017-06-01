@@ -46,12 +46,22 @@ angular.module('rnaminventoryApp')
                 console.log('Unable to load project data: ' + error.message);
               });
           });
-          gridApi.edit.on.afterCellEdit(null,function(rowEntity, colDef, newValue, oldValue){
-            //var newNeed = newValue-oldValue;
-            //proj.gridOptions.data = projectsClientService.getGapData(proj.gridOptions.data, rowEntity,colDef,newNeed);
-          });
-        }
-    };
+          gridApi.edit.on.afterCellEdit(null,function(rowEntity, colDef, newValue, oldValue,row,col){
+            var month = colDef.name.substring(5,8);
+            var year=colDef.name.substring(0,4);
+        		var Need = newValue;
+            var gap = colDef.name.substring(0,9).concat('Gap');
+            console.log(gap);
+            projectsService.getGapData(rowEntity.projId,year,month,Need)
+            .then(function(response){
+              rowEntity.months[gap] = response.data.GAP;
+              console.log(rowEntity.months[gap]);
+            })
+          // var newNeed = newValue-oldValue;
+        //  proj.gridOptions.data = projectsClientService.getGapData(proj.gridOptions.data, rowEntity,colDef,newNeed);
+        });
+    }
+  };
 
     proj.reset = function(){
       console.log(proj.origFormData);

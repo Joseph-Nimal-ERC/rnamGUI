@@ -11,11 +11,18 @@ angular.module('rnaminventoryApp')
    };
 
    this.getProjectsUtilization = function() {
-      return $http.get('http://localhost:3000/projUtilization');
+    //  return $http.get('../projUtil.json');
+      return $http.get('http://localhost:3000/projUtilization/getProjectsUtilization');
    };
 
    this.saveProjectsUtilization = function(data) {
       return $http.post('http://localhost:3000/projUtilization', data);
+   };
+   
+    this.getGapData=function(projId,year,month,need)
+   {
+     console.log('http://localhost:3000/projUtilization?projectId='+projId+'&year='+year+'&month='+month+'&need='+need);
+     return $http.get('http://localhost:3000/projUtilization?projectId='+projId+'&year='+year+'&month='+month+'&need='+need);
    };
 
    this.updateProjectsUtilization = function(data) {
