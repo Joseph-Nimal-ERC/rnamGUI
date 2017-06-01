@@ -28,8 +28,10 @@ router.get('/:id', function(req, res, next) {
 /* Create new Employee entry */
 router.post('/', function(req, res, next) {
   Employee.create(req.body, function (err, employee) {
-    if (err) return next(err);
-    res.json({message : 'Employee record added Successfully'});
+    if (err) 
+		return next(err);
+	else
+		res.json(employee);
   });
 });
 

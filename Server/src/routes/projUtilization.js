@@ -64,9 +64,8 @@ router.get('/getUtilizationForYear/:year', function(req, res, next) {
 
 
 /* Create new Project utilization entry */
-/* Create new Project utilization entry */
 router.post('/', function(req, res, next) {
-	ProjUtilization.insertMany(req.body, function(err, projUtilization){
+	ProjUtilization.create(req.body, function(err, projUtilization){
 		if(err)
 			next(err);
 		else
