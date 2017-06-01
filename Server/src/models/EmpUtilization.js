@@ -10,8 +10,8 @@ var EmpUtilizationScehma = new mongoose.Schema({
   mapping_dtls: [ 
   {
 	year: Number,
-	CurrentProject : String,
-	Status : String,
+	projId : {type : Schema.ObjectId, ref : 'projectCollection'},
+	status : String,
 	  months : 
 	  {
 		  Jan : Number,
