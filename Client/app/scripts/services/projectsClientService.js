@@ -35,6 +35,7 @@ angular.module('rnaminventoryApp')
 		var result = [];
 		data.forEach(function(item){
 			var row = {};
+			row._id = item._id;
 			row.projId = item.projId;
 			row.projName = item.projName;
 			row.months = {};
@@ -49,9 +50,59 @@ angular.module('rnaminventoryApp')
 		return result;
 	};
 
+	this.getSaveData = function(data, dataToSaveIds){
+			var result = [];
+			console.log(data);
+			console.log(dataToSaveIds);
+			dataToSaveIds.forEach(function(id){
+				console.log(id);
+				var row = _.find(data, {'projId' : id});
+				if(row){
+					result.push(row);
+				}
+			});
+			return result;
+	};
+
+	this.getGridDataForServer = function(data){
+		var result = [];
+		data.forEach(function(item){
+			var row = {};
+			row._id = item._id;
+			row.projId = item.projId;
+			row.projName = item.projName;
+			row.needGapDtls = [];
+			for(var key  in item.months){
+				var year = key.substring(0,4);
+				var month = key.substring(5);
+				var gapEntity = _.find(row.needGapDtls, {'year' : parseInt(year)});
+				if(gapEntity){
+					gapEntity.months[month] = item.months[key];
+				}
+				else{
+					var newEntry = {
+						'year' : null,
+						'months' : {}
+					};
+					newEntry.year = parseInt(year);
+					newEntry.months[month] = item.months[key];
+					row.needGapDtls.push(newEntry);
+				}
+			}
+			result.push(row);
+		});
+		return result;
+	}
+
+	this.removeSaveFromDirtyRows = function(data, dataToSaveIds) {
+		dataToSaveIds.forEach(function(id){
+			_.remove(data, { 'projId' : id});
+		})
+		return data;
+	}
 	this.getGapData = function(data, rowEntity, colDef, needDif){
 		var gap = colDef.name.substring(0,4).concat('Gap');
-		var oldGap = rowEntity.needGapDtls.months[gap];
+		var oldGap = rowEntity.months[gap];
 		var newGap = 0;
 		if(oldGap){
 			newGap = parseInt(oldGap)-parseInt(needDif);
@@ -59,9 +110,16 @@ angular.module('rnaminventoryApp')
 		else {
 			newGap = 0-parseInt(needDif);
 		}
-		rowEntity.needGapDtls.months[gap] = newGap;
+		rowEntity.months[gap] = newGap;
 		var index = _.findIndex(data, {'projId' : rowEntity.projId});
 		data.splice(index, 1, rowEntity);
 		 return data;
 	};
+
+	this.getSaveRows = function(data, dataToSaveId){
+
+		return _(data)
+    .filter(c => dataToSaveId.indexOf(c.projId))
+    .value();
+	}
 }]);

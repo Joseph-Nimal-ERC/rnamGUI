@@ -14,6 +14,14 @@ angular.module('rnaminventoryApp')
       return $http.get('http://localhost:3000/projUtilization');
    };
 
+   this.saveProjectsUtilization = function(data) {
+      return $http.post('http://localhost:3000/projUtilization', data);
+   };
+
+   this.updateProjectsUtilization = function(data) {
+      return $http.put('http://localhost:3000/projUtilization', data);
+   };
+
    this.getReference = function() {
       return $http.get('http://localhost:3000/references');
    };

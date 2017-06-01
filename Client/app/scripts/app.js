@@ -23,7 +23,8 @@ angular
     'ui.grid.selection',
     'ui.grid.exporter',
     'ui.grid.autoResize',
-    'ui.grid.pagination'
+    'ui.grid.pagination', 
+    'ui.grid.rowEdit'
   ])
   .config(function ($routeProvider,$locationProvider) {
 

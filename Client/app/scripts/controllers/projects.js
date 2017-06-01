@@ -5,6 +5,7 @@ angular.module('rnaminventoryApp')
     console.log('projects');
     var proj = this;
     proj.origFormData = {};
+    proj.dataToSave = [];
     proj.formVisibility = false;
     proj.formData = {};
     proj.managerNames = ["Anurag", "Ranjeet", "Rajesh"];
@@ -18,6 +19,7 @@ angular.module('rnaminventoryApp')
         'modifierKeysToMultiSelect' : false,
         'noUnselect' : true,
         'enableGridMenu': true,
+        'rowEditWaitInterval' :-1,
         'gridMenuCustomItems': [
           {
             title: 'Add Project',
@@ -45,8 +47,8 @@ angular.module('rnaminventoryApp')
               });
           });
           gridApi.edit.on.afterCellEdit(null,function(rowEntity, colDef, newValue, oldValue){
-            var newNeed = newValue-oldValue;
-            proj.gridOptions.data = projectsClientService.getGapData(proj.gridOptions.data, rowEntity,colDef,newNeed);
+            //var newNeed = newValue-oldValue;
+            //proj.gridOptions.data = projectsClientService.getGapData(proj.gridOptions.data, rowEntity,colDef,newNeed);
           });
         }
     };
@@ -59,10 +61,12 @@ angular.module('rnaminventoryApp')
     proj.save = function(){
       projectsService.saveProject(proj.formData)
         .then(function(response){
+          var id = response.data._id;
+          proj.dataToSave.push(id)
           console.log("Project persisted");
           proj.gridOptions.data.push({
-            'projId': response.data._id,
-            'projName' : response.data.projects
+            'projId': id,
+            'projName' : response.data.projName
           });
         });
     };
@@ -72,6 +76,40 @@ angular.module('rnaminventoryApp')
       proj.gridApi.core.notifyDataChange( uiGridConstants.dataChange.COLUMN );
     };
 
+    proj.saveRows = function(){
+      var dirty = proj.gridApi.rowEdit.getDirtyRows(proj.gridApi.grid);
+      var dataDirtyRows = dirty.map(function (gridRow) {
+          return gridRow.entity;
+      });
+      console.log(dataDirtyRows);
+      if(proj.dataToSave.length > 0)
+      {
+      dataDirtyRows = projectsClientService.removeSaveFromDirtyRows(dataDirtyRows, proj.dataToSave);
+      var saveData = projectsClientService.getSaveData(proj.gridOptions.data, proj.dataToSave);
+      if(saveData){
+        var saveDataToServer = projectsClientService.getGridDataForServer(saveData);
+        projectsService.saveProjectsUtilization(saveDataToServer)
+        .then(function (response){
+          proj.dataToSave = [];
+          console.log("Saved data");
+        }, function(error){
+          console.log('Unable to save project utilization data: ' + error.message);
+        });
+      }
+    }   
+    console.log(dataDirtyRows);
+    if(dataDirtyRows.length > 0){
+
+      var serverRows = projectsClientService.getGridDataForServer(dataDirtyRows);
+      projectsService.updateProjectsUtilization(serverRows)
+        .then(function (response){
+          console.log("updated rows");
+          proj.gridApi.rowEdit.setRowsClean(dataDirtyRows);
+        }, function(error){
+          console.log('Unable to update project utilization data: ' + error.message);
+        });
+      }
+    }
     projectsService.getProjectsUtilization()
         .then(function (response) {
                 var gridData = projectsClientService.getUtilGridData(response.data);
