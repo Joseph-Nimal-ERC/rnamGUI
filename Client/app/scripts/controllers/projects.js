@@ -40,8 +40,10 @@ angular.module('rnaminventoryApp')
 
                 proj.origFormData = response.data;
                 proj.formData = Object.assign({}, proj.origFormData);
-                proj.formVisibility = true;
-              
+                proj.managerName.value = proj.formData.manager;
+                console.log(proj.managerName.value);
+                proj.directorName.value = proj.formData.Director;
+                console.log(proj.directorName.value);
               }, function(error){
                 console.log('Unable to load project data: ' + error.message);
               });
@@ -62,6 +64,13 @@ angular.module('rnaminventoryApp')
         });
     }
   };
+    proj.show = function(){
+      proj.formVisibility = true;
+    }
+
+    proj.cancel = function(){
+     proj.formVisibility = false; 
+    }
 
     proj.reset = function(){
       console.log(proj.origFormData);
@@ -130,10 +139,20 @@ angular.module('rnaminventoryApp')
             });
 
         projectsService.getReference()
-        .then(function (response) {
-                proj.managerList = response.data.managerList;
-                proj.directorList = response.data.directorList;
-                proj.egiLM = response.data.egiLM;
+              .then(function (response) {
+                proj.managerList = response.data[0].managerList;
+                proj.managerName = {   "type": "select", 
+                "name": "Manager",
+                "value": null, 
+                "values": proj.managerList 
+            };
+                proj.directorList = response.data[0].directorList;
+                proj.directorName = {   "type": "select", 
+                "name": "Director",
+                "value": null, 
+                "values": proj.directorList 
+            };
+                proj.egiLM = response.data[0].egiLM;
             }, function (error) {
                 console.log('Unable to load project utilization data: ' + error.message);
             });
