@@ -5,7 +5,7 @@ var ProjUtilization = require('../models/ProjUtilization.js');
 var EmpUtilization = require('../models/EmpUtilization.js');
 
 /* Get all Project utilization details */
-router.get('/', function(req, res, next) {
+router.get('/getAllProjectUtilization', function(req, res, next) {
   ProjUtilization.find(function (err, projUtilization) {
     if (err) return next(err);
 	if(!projUtilization)
