@@ -7,15 +7,15 @@ angular.module('rnaminventoryApp')
    };
 
    this.getProjectById = function(id) {
-      return $http.get('http://localhost:3000/project/getTask/'.concat(id));
+      return $http.get('http://localhost:3000/project/'.concat(id));
    };
 
    this.getProjectsUtilization = function() {
-      return $http.get('../projUtil.json');
+      return $http.get('http://localhost:3000/projUtilization');
    };
 
    this.getReference = function() {
-      return $http.get('../reference.json');
+      return $http.get('http://localhost:3000/references');
    };
 
    this.saveProject = function(data) {

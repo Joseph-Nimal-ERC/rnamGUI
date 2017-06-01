@@ -4,7 +4,7 @@ var ProjectCollectionSchema = new mongoose.Schema({
   probOfDeal: String,
   region: String,
   manager: String,
-  Director: String,
+  director: String,
   start_dt: String,
   end_dt: String,
   remarks : String,

@@ -71,7 +71,7 @@ router.post('/', function(req, res, next) {
 		else
 			res.json(projUtilization);
 		});
-	}	
+		
 	 res.json({message : 'Project Utilization record(s) added Successfully'});
 });
 

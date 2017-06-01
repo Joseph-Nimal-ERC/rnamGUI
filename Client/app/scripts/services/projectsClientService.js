@@ -40,7 +40,7 @@ angular.module('rnaminventoryApp')
 			row.months = {};
 			item.needGapDtls.forEach(function(needGap){
 				for(var key in needGap.months){
-					var name = needGap.year.concat(' ').concat(key);
+					var name = needGap.year.toString().concat(' ').concat(key);
 					row.months[name] = needGap.months[key];
 				}
 			});

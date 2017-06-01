@@ -1,31 +1,8 @@
 [{
     "projId" : "5927160f15ff2323a44f30a5",
     "projName" : "Charter-EXPO",
-    "start_dt" : "2016-05-01",
-    "end_dt" : " 2018-05-31",
     "needGapDtls" : 
-        [{
-		"year" : "2016",
-           "months" :
-		   {
-            "May_Need" : "",
-            "May_Gap" : "",
-            "Jun_Need" : "",
-            "Jun_Gap" : "",
-            "Jul_Need" : "",
-            "Jul_Gap" : "",
-            "Aug_Need" : "",
-            "Aug_Gap" : "",
-            "Sep_Need" : "",
-            "Sep_Gap" : "",
-            "Oct_Need" : "",
-            "Oct_Gap" : "",
-            "Nov_Need" : "",
-            "Nov_Gap" : "",
-            "Dec_Need" : "",
-            "Dec_Gap" : ""
-			}
-        },
+        [
         {
         "year" : "2017",
            "months" :
@@ -46,8 +23,6 @@
 {
     "projId" : "592715df15ff2323a44f30a4",
     "projName" : "CTL",
-    "start_dt" : "2017-03-01",
-    "end_dt" : " 2018-05-31",
     "needGapDtls" : 
         [{
         "year" : "2016",
@@ -84,8 +59,6 @@
 {
     "projId" : "592716ba15ff2323a44f30a6",
     "projName" : "Charter - MVNE",
-    "start_dt" : "2017-03-01",
-    "end_dt" : " 2018-05-31",
     "needGapDtls" : 
         [{
         "year" : "2016",
@@ -122,8 +95,6 @@
 {
     "projId" : "592716ba15ff2323a44f3",
     "projName" : "Entel Chile",
-    "start_dt" : "2017-03-09",
-    "end_dt" : " 2020-03-31",
     "needGapDtls" : 
         [{
         "year" : "2017",
@@ -160,8 +131,6 @@
 {
     "projId" : "592716ba15ff2323a44",
     "projName" : "Sprint NIMS",
-    "start_dt" : "2017-01-06",
-    "end_dt" : " 2019-03-31",
     "needGapDtls" : 
         [{
         "year" : "2017",
@@ -199,8 +168,6 @@
 {
     "projId" : "592716ba15ff2323a4",
     "projName" : "BOGOLOGO",
-    "start_dt" : "2016-02-04",
-    "end_dt" : " 2018-08-31",
     "needGapDtls" : 
         [{
         "year" : "2017",
@@ -237,8 +204,6 @@
 {
     "projId" : "592716ba15ff2323a4",
     "projName" : "OTech",
-    "start_dt" : "2017-09-15",
-    "end_dt" : " 2018-08-31",
     "needGapDtls" : 
         [{
         "year" : "2017",

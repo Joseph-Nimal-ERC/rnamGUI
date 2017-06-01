@@ -12,6 +12,7 @@ var projDashboard = require('./routes/projDashboard');
 var employee = require('./routes/employee');
 var empUtilization = require('./routes/empUtilization');
 var empDashboard = require('./routes/empDashboard');
+var references = require('./routes/references');
 
 var db;
 var app = express();
@@ -45,6 +46,7 @@ app.use('/projDashboard', projDashboard);
 app.use('/employee', employee);
 app.use('/empUtilization', empUtilization);
 app.use('/empDashboard', empDashboard);
+app.use('/references', references);
 
 
 // catch 404 and forward to error handler

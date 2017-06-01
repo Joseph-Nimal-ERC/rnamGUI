@@ -4,8 +4,6 @@ angular.module('rnaminventoryApp')
   .controller('ProjectsCtrl',['projectsService', 'projectsClientService', 'uiGridConstants', function (projectsService, projectsClientService, uiGridConstants) {
     console.log('projects');
     var proj = this;
-    proj.enablebutton = false;
-    proj.enableShow= false;
     proj.origFormData = {};
     proj.formVisibility = false;
     proj.formData = {};
@@ -34,14 +32,14 @@ angular.module('rnaminventoryApp')
         onRegisterApi: function(gridApi){
           proj.gridApi = gridApi;
           gridApi.selection.on.rowSelectionChanged(null, function(row){
-              proj.enablebutton = true;
-              proj.enableShow= true;
-              
+                
             projectsService.getProjectById(row.entity.projId)
               .then(function(response){
+
                 proj.origFormData = response.data;
                 proj.formData = Object.assign({}, proj.origFormData);
-                console.log(proj.formData);
+                proj.formVisibility = true;
+              
               }, function(error){
                 console.log('Unable to load project data: ' + error.message);
               });
@@ -68,14 +66,6 @@ angular.module('rnaminventoryApp')
           });
         });
     };
-
-    proj.show=function(){
-            proj.formVisibility = true;
-          };
-
-    proj.cancel=function(){
-            proj.formVisibility = false;
-          };
 
     proj.toggleFiltering = function(){
       proj.gridOptions.enableFiltering = !proj.gridOptions.enableFiltering;
