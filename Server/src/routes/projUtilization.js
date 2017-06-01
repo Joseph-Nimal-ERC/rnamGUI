@@ -64,14 +64,18 @@ router.get('/getUtilizationForYear/:year', function(req, res, next) {
 });
 
 
-/* Create new Project utilization entry */
-router.post('/', function(req, res, next) {
-	ProjUtilization.create(req.body, function(err, projUtilization){
-		if(err)
-			next(err);
-		else
-			res.json(projUtilization);
-		});
+/* Get Project utilization details for given year range */
+router.get('/', function(req, res, next) {
+  var fromYearValue = req.query.fromyear;
+  var toYearValue = req.query.toyear;
+  ProjUtilization.find({'need_Gap_dtls.year': {$gte:fromYearValue, $lte : toYearValue}},function (err, projUtilization) {
+   if (err) return next(err);
+	if(!projUtilization)
+		res.json({message : 'No details found for the projecttreses'});
+	else
+		res.json(projUtilization);
+  });
+});
 	
 });
 
