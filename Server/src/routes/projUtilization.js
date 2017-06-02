@@ -79,6 +79,16 @@ router.get('/', function(req, res, next) {
 	
 });
 
+/* Create new Project utilization entry */
+router.post('/', function(req, res, next) {
+	ProjUtilization.create(req.body, function(err, projUtilization){
+		if(err)
+			next(err);
+		else
+			res.json(projUtilization);
+		});
+})
+
 /* Update existing Project utilization entry */
 router.put('/', function(req, res, next) {
 	for(var key in req.body){
