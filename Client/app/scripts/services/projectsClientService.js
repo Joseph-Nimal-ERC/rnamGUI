@@ -94,6 +94,9 @@ angular.module('rnaminventoryApp')
 		return result;
 	}
 
+	this.checkForChange = function(origData, newData){
+		return _.isEqual(origData, newData);
+	}
 	this.removeSaveFromDirtyRows = function(data, dataToSaveIds) {
 		dataToSaveIds.forEach(function(id){
 			_.remove(data, { 'projId' : id});

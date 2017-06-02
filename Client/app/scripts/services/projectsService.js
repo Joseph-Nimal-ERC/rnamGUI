@@ -29,4 +29,8 @@ angular.module('rnaminventoryApp')
    this.saveProject = function(data) {
       return $http.post('http://localhost:3000/project', data);
    };
+
+   this.updateProject = function(data) {
+      return $http.put('http://localhost:3000/project', data);
+   };
 }]);

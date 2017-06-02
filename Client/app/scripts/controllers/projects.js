@@ -7,6 +7,7 @@ angular.module('rnaminventoryApp')
     proj.origFormData = {};
     proj.dataToSave = [];
     proj.formVisibility = false;
+    proj.newProject = false;
     proj.formData = {};
     proj.managerNames = ["Anurag", "Ranjeet", "Rajesh"];
     proj.gridOptions = {
@@ -26,6 +27,7 @@ angular.module('rnaminventoryApp')
             action: function ($event) {
                proj.formData = {};
                proj.formVisibility = true;
+               proj.newProject = true;
             },
             order: 210
           }
@@ -53,22 +55,46 @@ angular.module('rnaminventoryApp')
         }
     };
 
+    proj.cancel = function(){
+      proj.formData = proj.origFormData = {};
+      proj.formVisibility = false;
+      proj.newProject = false;
+    }
+
     proj.reset = function(){
       console.log(proj.origFormData);
       proj.formData = Object.assign({}, proj.origFormData);
     };
 
     proj.save = function(){
-      projectsService.saveProject(proj.formData)
-        .then(function(response){
-          var id = response.data._id;
-          proj.dataToSave.push(id)
-          console.log("Project persisted");
-          proj.gridOptions.data.push({
-            'projId': id,
-            'projName' : response.data.projName
+      if(proj.newProject){
+        projectsService.saveProject(proj.formData)
+          .then(function(response){
+            var id = response.data._id;
+            proj.dataToSave.push(id)
+            console.log("Project persisted");
+            proj.gridOptions.data.push({
+              'projId': id,
+              'projName' : response.data.projName
+            });
+            proj.newProject = false;
+          }, function(error){
+            console.log("Error saving new project");
           });
-        });
+
+      }
+      else if(!projectsClientService.checkForChange(proj.origFormData, proj.formData)){
+        projectsService.updateProject(proj.formData)
+          .then(function(response){
+            console.log("Project Updated");
+          }, function(error){
+            console.log("Error while updating project");
+          })
+        
+      }
+      else {
+        console.log("Nothing to save or update");
+      }
     };
 
     proj.toggleFiltering = function(){
