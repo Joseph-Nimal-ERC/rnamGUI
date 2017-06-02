@@ -7,6 +7,7 @@ angular.module('rnaminventoryApp')
     proj.origFormData = {};
     proj.dataToSave = [];
     proj.formVisibility = false;
+    proj.newProject = false;
     proj.formData = {};
     proj.managerNames = ["Anurag", "Ranjeet", "Rajesh"];
     proj.gridOptions = {
@@ -26,6 +27,7 @@ angular.module('rnaminventoryApp')
             action: function ($event) {
                proj.formData = {};
                proj.formVisibility = true;
+               proj.newProject = true;
             },
             order: 210
           }
@@ -34,24 +36,47 @@ angular.module('rnaminventoryApp')
         onRegisterApi: function(gridApi){
           proj.gridApi = gridApi;
           gridApi.selection.on.rowSelectionChanged(null, function(row){
-                
+                proj.formVisibility = true;
             projectsService.getProjectById(row.entity.projId)
               .then(function(response){
 
                 proj.origFormData = response.data;
                 proj.formData = Object.assign({}, proj.origFormData);
-                proj.formVisibility = true;
-              
+                proj.managerName.value = proj.formData.manager;
+                console.log(proj.managerName.value);
+                proj.directorName.value = proj.formData.director;
+                console.log(proj.directorName.value);
               }, function(error){
                 console.log('Unable to load project data: ' + error.message);
               });
           });
-          gridApi.edit.on.afterCellEdit(null,function(rowEntity, colDef, newValue, oldValue){
-            //var newNeed = newValue-oldValue;
-            //proj.gridOptions.data = projectsClientService.getGapData(proj.gridOptions.data, rowEntity,colDef,newNeed);
-          });
-        }
-    };
+          gridApi.edit.on.afterCellEdit(null,function(rowEntity, colDef, newValue, oldValue,row,col){
+            var month = colDef.name.substring(5,8);
+            var year=colDef.name.substring(0,4);
+        		var Need = newValue;
+            var gap = colDef.name.substring(0,9).concat('Gap');
+            console.log(gap);
+            projectsService.getGapData(rowEntity.projId,year,month,Need)
+            .then(function(response){
+              rowEntity.months[gap] = response.data.GAP;
+              console.log(rowEntity.months[gap]);
+            })
+          // var newNeed = newValue-oldValue;
+        //  proj.gridOptions.data = projectsClientService.getGapData(proj.gridOptions.data, rowEntity,colDef,newNeed);
+        });
+    }
+  };
+
+
+    proj.cancel = function(){
+     proj.formVisibility = false; 
+    }
+
+    proj.cancel = function(){
+      proj.formData = proj.origFormData = {};
+      proj.formVisibility = false;
+      proj.newProject = false;
+    }
 
     proj.reset = function(){
       console.log(proj.origFormData);
@@ -59,16 +84,36 @@ angular.module('rnaminventoryApp')
     };
 
     proj.save = function(){
-      projectsService.saveProject(proj.formData)
-        .then(function(response){
-          var id = response.data._id;
-          proj.dataToSave.push(id)
-          console.log("Project persisted");
-          proj.gridOptions.data.push({
-            'projId': id,
-            'projName' : response.data.projName
+      proj.formData.director = proj.directorName.value;
+      proj.formData.manager = proj.managerName.value;
+      if(proj.newProject){
+        projectsService.saveProject(proj.formData)
+          .then(function(response){
+            var id = response.data._id;
+            proj.dataToSave.push(id)
+            console.log("Project persisted");
+            proj.gridOptions.data.push({
+              'projId': id,
+              'projName' : response.data.projName
+            });
+            proj.newProject = false;
+          }, function(error){
+            console.log("Error saving new project");
           });
-        });
+
+      }
+      else if(!projectsClientService.checkForChange(proj.origFormData, proj.formData)){
+        projectsService.updateProject(proj.formData)
+          .then(function(response){
+            console.log("Project Updated");
+          }, function(error){
+            console.log("Error while updating project");
+          })
+        
+      }
+      else {
+        console.log("Nothing to save or update");
+      }
     };
 
     proj.toggleFiltering = function(){
@@ -120,10 +165,20 @@ angular.module('rnaminventoryApp')
             });
 
         projectsService.getReference()
-        .then(function (response) {
-                proj.managerList = response.data.managerList;
-                proj.directorList = response.data.directorList;
-                proj.egiLM = response.data.egiLM;
+              .then(function (response) {
+                proj.managerList = response.data[0].managerList;
+                proj.managerName = {   "type": "select", 
+                "name": "Manager",
+                "value": null, 
+                "values": proj.managerList 
+            };
+                proj.directorList = response.data[0].directorList;
+                proj.directorName = {   "type": "select", 
+                "name": "Director",
+                "value": null, 
+                "values": proj.directorList 
+            };
+                proj.egiLM = response.data[0].egiLM;
             }, function (error) {
                 console.log('Unable to load project utilization data: ' + error.message);
             });
