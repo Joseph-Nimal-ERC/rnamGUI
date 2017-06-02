@@ -36,7 +36,7 @@ angular.module('rnaminventoryApp')
         onRegisterApi: function(gridApi){
           proj.gridApi = gridApi;
           gridApi.selection.on.rowSelectionChanged(null, function(row){
-                
+                proj.formVisibility = true;
             projectsService.getProjectById(row.entity.projId)
               .then(function(response){
 
@@ -66,10 +66,7 @@ angular.module('rnaminventoryApp')
         });
     }
   };
-    proj.show = function(){
-      proj.formVisibility = true;
-    }
-
+  
     proj.cancel = function(){
      proj.formVisibility = false; 
     }
