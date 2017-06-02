@@ -44,7 +44,7 @@ angular.module('rnaminventoryApp')
                 proj.formData = Object.assign({}, proj.origFormData);
                 proj.managerName.value = proj.formData.manager;
                 console.log(proj.managerName.value);
-                proj.directorName.value = proj.formData.Director;
+                proj.directorName.value = proj.formData.director;
                 console.log(proj.directorName.value);
               }, function(error){
                 console.log('Unable to load project data: ' + error.message);
@@ -66,7 +66,8 @@ angular.module('rnaminventoryApp')
         });
     }
   };
-  
+
+
     proj.cancel = function(){
      proj.formVisibility = false; 
     }
@@ -83,6 +84,8 @@ angular.module('rnaminventoryApp')
     };
 
     proj.save = function(){
+      proj.formData.director = proj.directorName.value;
+      proj.formData.manager = proj.managerName.value;
       if(proj.newProject){
         projectsService.saveProject(proj.formData)
           .then(function(response){
