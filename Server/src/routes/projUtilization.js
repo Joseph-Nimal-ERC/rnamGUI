@@ -5,7 +5,7 @@ var ProjUtilization = require('../models/ProjUtilization.js');
 var EmpUtilization = require('../models/EmpUtilization.js');
 
 /* Get all Project utilization details */
-router.get('/', function(req, res, next) {
+router.get('/getAllProjectUtilization', function(req, res, next) {
   ProjUtilization.find(function (err, projUtilization) {
     if (err) return next(err);
 	if(!projUtilization)
@@ -35,7 +35,7 @@ router.get('/', function(req, res, next) {
   var allocatedResources = 0;
   var monthTagName = 'mapping_dtls.months.'+ month;
   console.log('inside gap');
-  EmpUtilization.find({'mapping_dtls.projId' : projectId, 'mapping_dtls.year' : year, 'mapping_dtls.Status' : 'Committed'}).where(monthTagName).equals(1.0).exec(function (err, empUtilization) {
+  EmpUtilization.find({'mapping_dtls.projId' : projectId, 'mapping_dtls.year' : year, 'mapping_dtls.status' : 'Committed'}).where(monthTagName).equals(1).exec(function (err, empUtilization) {
     if (err) return next(err);
 	if(!empUtilization)
 		res.json({GAP : -(need)});

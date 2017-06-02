@@ -6,4 +6,4 @@ var references = new mongoose.Schema({
   egiLM: Array,
 });
 
-module.exports = mongoose.model('referenceSCollection', references);
+module.exports = mongoose.model('referencescollections', references);
