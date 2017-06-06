@@ -7,10 +7,10 @@
     "status" : "Committed",
     "currentProjName" : "Charter-EXPO",
     "currProjId" : "342342",
-    "Mapping_dtls" : [ 
+    "mapping_dtls" : [
         {
-        "Year" : "2016",
-         "months" : 
+        "year" : "2016",
+         "months" :
             {
             "Jan" : "1.0",
             "Feb" : "",
@@ -37,10 +37,10 @@
     "status" : "Committed",
     "currentProjName" : "TMO NSM",
     "currProjId" : "342342",
-    "Mapping_dtls" : [ 
+    "mapping_dtls" : [
         {
-        "Year" : "2016",
-         "months" : 
+        "year" : "2016",
+         "months" :
             {
             "Jan" : "1.0",
             "Feb" : "",
@@ -67,10 +67,10 @@
     "status" : "Committed",
     "currentProjName" : "BMC Remedy",
     "currProjId" : "342342",
-    "Mapping_dtls" : [ 
+    "mapping_dtls" : [
         {
-        "Year" : "2016",
-         "months" : 
+        "year" : "2016",
+         "months" :
             {
             "Jan" : "1.0",
             "Feb" : "",
@@ -97,10 +97,10 @@
     "status" : "Committed",
     "currentProjName" : "Centurylink",
     "currProjId" : "342342",
-    "Mapping_dtls" : [ 
+    "mapping_dtls" : [
         {
-        "Year" : "2016",
-         "months" : 
+        "year" : "2016",
+         "months" :
             {
             "Jan" : "1.0",
             "Feb" : "1.0",
@@ -127,10 +127,10 @@
     "status" : "Committed",
     "currentProjName" : "Charter-EXPO",
     "currProjId" : "342342",
-    "Mapping_dtls" : [ 
+    "mapping_dtls" : [
         {
-        "Year" : "2016",
-         "months" : 
+        "year" : "2016",
+         "months" :
             {
             "Jan" : "1.0",
             "Feb" : "",
@@ -149,4 +149,3 @@
     ]
 }
 ]
- 

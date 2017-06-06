@@ -10,7 +10,7 @@
 angular.module('rnaminventoryApp')
   .controller('EmployeesCtrl',['employeeService', 'employeeClientService', 'uiGridConstants', function (employeeService, employeeClientService, uiGridConstants) {
   	console.log(employeeService);
-  	var emp = this;  
+  	var emp = this;
 
     emp.enablebutton = false;
     emp.enableShow= false;
@@ -41,14 +41,14 @@ angular.module('rnaminventoryApp')
     { name:'cu', width:150 },
     { name:'Egi_Line_Manager', width:150 },
     { name:'getMonthAndYear()', width:150 }
-    
+
   ]*/
     };
 
     		      emp.gridOptions.enableRowSelection=true;
               emp.gridOptions.enableRowHeaderSelection=false;
               emp.gridOptions.modifierKeysToMultiSelect=true;
-              emp.gridOptions.multiSelect= true; 
+              emp.gridOptions.multiSelect= true;
               emp.gridOptions.enableGridMenu= true;
               emp.gridOptions.enableCellEdit=false;
               emp.gridOptions.enableCellEditOnFocus= true;
@@ -85,9 +85,9 @@ angular.module('rnaminventoryApp')
         employeeService.getEmployees()
         .then(function (response) {
             console.log(response);
-                emp.gridOptions.columnDefs = employeeClientService.getColumnDefs(response.data[0]);
-                emp.gridOptions.data = response.data;
-                console.log(emp.gridOptions.data);
+            var gridData = employeeClientService.getUtilGridData(response.data);
+            emp.gridOptions.columnDefs = employeeClientService.getColumnDefs(gridData[0]);
+            emp.gridOptions.data = gridData;
             }, function (error) {
                 console.log('Unable to load projects data: ' + error.message);
             });
@@ -103,6 +103,4 @@ angular.module('rnaminventoryApp').filter('date', function () {
   return function (input) {
       return input.month + ', ' + input.year;
   };
-}); 
-
-
+});
