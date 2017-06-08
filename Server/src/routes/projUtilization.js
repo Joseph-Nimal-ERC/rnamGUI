@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var ProjUtilization = require('../models/ProjUtilization.js');
-var EmpUtilization = require('../models/EmpUtilization.js');
+var Employee = require('../models/Employee.js');
 
 /* Get all Project utilization details */
 router.get('/getAllProjectUtilization', function(req, res, next) {
@@ -35,12 +35,13 @@ router.get('/', function(req, res, next) {
   var allocatedResources = 0;
   var monthTagName = 'mapping_dtls.months.'+ month;
   console.log('inside gap');
-  EmpUtilization.find({'mapping_dtls.projId' : projectId, 'mapping_dtls.year' : year, 'mapping_dtls.status' : 'Committed'}).where(monthTagName).equals(1).exec(function (err, empUtilization) {
-    if (err) return next(err);
-	if(!empUtilization)
+  Employee.find({'mapping_dtls.projId' : projectId, 'mapping_dtls.year' : year, 'mapping_dtls.status' : 'Committed'}).where(monthTagName).equals(1).exec(function (err, employee) {
+    if (err) 
+		return next(err);
+	if(!employee)
 		res.json({GAP : -(need)});
 	else{
-		empUtilization.forEach(function(empUtilRecord){
+		employee.forEach(function(empRecord){
 			allocatedResources = allocatedResources + 1;
 			console.log(allocatedResources);
 		});
@@ -151,6 +152,7 @@ router.put('/', function(req, res, next) {
 	}
   });
 });
+
 
 /* Delete an Project utilization entry */
 router.delete('/:id', function(req, res, next) {
