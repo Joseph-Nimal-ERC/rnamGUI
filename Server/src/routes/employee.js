@@ -7,10 +7,10 @@ var Employee = require('../models/Employee.js');
 router.get('/', function(req, res, next) {
   Employee.find(function (err, employee) {
     if (err) return next(err);
-  if(!employee)
-    res.json({message : 'No records found'});
+	if(!employee)
+		res.json({message : 'No Employee records found'});
     else
-    res.json(employee);
+		res.json(employee);
   });
 });
 
@@ -37,10 +37,16 @@ router.post('/', function(req, res, next) {
 
 /* Update existing Employee entry */
 router.put('/', function(req, res, next) {
-  Employee.findOneAndUpdate({_id : req.body._id}, req.body, function (err, employee) {
-    if (err) return next(err);
-    res.json({message : 'Employee record updated Successfully'});
-  });
+	for(var key in req.body){
+		var reqBody = req.body[key];
+		//console.log(reqBody._id);
+		Employee.findOneAndUpdate({_id : reqBody._id}, reqBody, function (err, employee) {
+		if (err) 
+			return next(err);
+		});
+		console.log(reqBody.mapping_dtls[0].projId);
+	}
+	res.json({message : 'Employee record(s) updated Successfully'});
 });
 
 /* Delete an Employee entry */
