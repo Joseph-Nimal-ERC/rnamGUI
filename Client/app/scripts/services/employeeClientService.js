@@ -105,8 +105,8 @@ this.getGridDataForServer = function(data){
 				var year = key.substring(0,4);
 				var month = key.substring(5);
         var projId = item.projId;
-        var status = mapping.status;
-        var CU=mapping.CU;
+        var status = item.status;
+        var CU=item.CU;
 				var mappingEntity = _.find(row.mapping_dtls, {'year' : parseInt(year)});
 				if(mappingEntity){
 					mappingEntity.months[month] = item.months[key];

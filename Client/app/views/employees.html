@@ -58,5 +58,8 @@
 <br>
 <button ng-show="emp.enablebutton" class="btn btn-primary btnCustom" ng-click="emp.edit()">Edit</button>
 <button ng-show="emp.enableShow" class="btn btn-primary btnCustom" ng-click="emp.show()">Show Details</button>
+<div ng-if="emp.gridOptions.data">
+      <button class="btn btn-primary btnCustom" ng-click="emp.saveRows()">Save</button>
+</div>
 <br><br>
-<div ui-grid=emp.gridOptions class="myGrid" ui-grid-resize-columns ui-grid-move-columns ui-grid-pinning ui-grid-auto-resize ui-grid-pagination ui-grid-selection ui-grid-move-columns ui-grid-edit></div>
+<div ui-grid=emp.gridOptions class="myGrid" ui-grid-resize-columns ui-grid-move-columns ui-grid-pinning ui-grid-auto-resize ui-grid-pagination ui-grid-selection ui-grid-move-columns ui-grid-edit ui-grid-row-edit></div>
