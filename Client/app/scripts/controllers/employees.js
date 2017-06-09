@@ -15,35 +15,34 @@ angular.module('rnaminventoryApp')
     emp.enablebutton = false;
     emp.enableShow= false;
 
-  	emp.gridOptions = {
-        'enableSorting': 'true',
-        'enableColumnResizing': 'true',
-        'enablePinning':'true',
-      	'enableFiltering': 'true',
-      	'paginationPageSizes': [25, 50, 75],
-    	'paginationPageSize': 25,
-    	/*'columnDefs':[
-    { name:'signum', width:100  },
-    { name:'name', width:200  },
-    { name:'type', width:100  },
-    { name:'Job_Stage', width:100  },
-    { name:'role', width:150 },
-    { name:'location', width:150 },
-    { name:'eoc_exp', width:100 },
-    { name:'ecm_exp', width:100 },
-    { name:'total_exp', width:100 },
-    { name:'ho_month', width:200 },
-    { name:'teamName', width:200 },
-    { name:'projectName', width:150 },
-    { name:'pool', width:100 },
-    { name:'approved_by_RNAM_OSS', width:150 },
-    { name:'status', width:150 },
-    { name:'cu', width:150 },
-    { name:'Egi_Line_Manager', width:150 },
-    { name:'getMonthAndYear()', width:150 }
+    emp.ProjectNamelist = [];
 
-  ]*/
-    };
+  	emp.gridOptions = {
+         'enableSorting': true,
+        'enableColumnResizing': true,
+        'enablePinning':true,
+      	'enableFiltering': true,
+      	'paginationPageSizes': [25, 50, 75],
+      'showGridFooter': true,
+      'enableRowSelection': true,
+      'enableRowHeaderSelection' : false,
+      'multiSelect' : false,
+      'modifierKeysToMultiSelect' : false,
+      'noUnselect' : true,
+      'enableGridMenu': true,
+      'rowEditWaitInterval' :-1,
+      'gridMenuCustomItems': [
+        {
+          title: 'Add Employee',
+          action: function ($event) {
+             emp.formData = {};
+             emp.formVisibility = true;
+             emp.newEmployee = true;
+          },
+          order: 210
+        }
+      ]
+    	    };
 
     		      emp.gridOptions.enableRowSelection=true;
               emp.gridOptions.enableRowHeaderSelection=false;
@@ -81,6 +80,41 @@ angular.module('rnaminventoryApp')
   					emp.enableForm = false;
     			};
 
+          emp.saveRows = function(){
+            var dirty = emp.gridApi.rowEdit.getDirtyRows(emp.gridApi.grid);
+            var dataDirtyRows = dirty.map(function (gridRow) {
+                return gridRow.entity;
+            });
+            console.log(dataDirtyRows);
+          /*  if(emp.dataToSave.length > 0)
+            {
+            dataDirtyRows = employeeClientService.removeSaveFromDirtyRows(dataDirtyRows, emp.dataToSave);
+            var saveData = employeeClientService.getSaveData(emp.gridOptions.data, emp.dataToSave);
+            if(saveData){
+              var saveDataToServer = employeeClientService.getGridDataForServer(saveData);
+              employeeService.saveEmployeesUtilization(saveDataToServer)
+              .then(function (response){
+                emp.dataToSave = [];
+                console.log("Saved data");
+              }, function(error){
+                console.log('Unable to save Employee utilization data: ' + error.message);
+              });
+            }
+          }*/
+          if(dataDirtyRows.length > 0){
+
+            var serverRows = employeeClientService.getGridDataForServer(dataDirtyRows);
+            console.log(serverRows);
+            employeeService.updateEmployees(serverRows)
+              .then(function (response){
+                console.log("updated rows");
+                emp.gridApi.rowEdit.setRowsClean(dataDirtyRows);
+              }, function(error){
+                console.log('Unable to update Employee utilization data: ' + error.message);
+              });
+            }
+          }
+
 
         employeeService.getEmployees()
         .then(function (response) {
@@ -91,16 +125,14 @@ angular.module('rnaminventoryApp')
             }, function (error) {
                 console.log('Unable to load projects data: ' + error.message);
             });
+
+            employeeService.getProjectName()
+          .then(function(response){
+            emp.ProjectNamelist = employeeClientService.getProjectlist(response.data);
+          });
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
   }]);
-
-
-angular.module('rnaminventoryApp').filter('date', function () {
-  return function (input) {
-      return input.month + ', ' + input.year;
-  };
-});
