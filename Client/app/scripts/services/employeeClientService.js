@@ -22,7 +22,7 @@ angular.module('rnaminventoryApp')
         {
             'field': 'projId',
             'name': 'Project',
-            'enableCellEdit' : false,
+            'enableCellEdit' : true,
             'minWidth': 50
         },
         {
@@ -83,6 +83,13 @@ angular.module('rnaminventoryApp')
   return project;
 
 };
+
+this.mergingrows =function(newdata,olddata){
+
+  console.log(newdata);
+  console.log(olddata);
+
+};
 this.getGridDataForServer = function(data){
 		var result = [];
 		data.forEach(function(item){
@@ -131,6 +138,22 @@ this.getGridDataForServer = function(data){
 			result.push(row);
 		});
 		return result;
+	};
+  this.checkForChange = function(origData, newData){
+		return _.isEqual(origData, newData);
+	};
+  this.getSaveData = function(data, dataToSaveIds){
+			var result = [];
+			console.log(data);
+			console.log(dataToSaveIds);
+			dataToSaveIds.forEach(function(id){
+				console.log(id);
+				var row = _.find(data, {'employeeId' : id});
+				if(row){
+					result.push(row);
+				}
+			});
+			return result;
 	};
 
   this.getUtilGridData = function(data){

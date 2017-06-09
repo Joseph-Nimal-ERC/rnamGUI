@@ -14,7 +14,7 @@ text-shadow: 4px 4px black;
 color: red;}
 
 .myGrid {
-    width: 1000px;
+    width: 1500px;
     height: 275px;
     float: left;
   }
@@ -67,13 +67,13 @@ body {
 
 /* Custom page header */
 .header {
- 
+
   border-bottom: 1px solid #e5e5e5;
   margin-bottom: 10px;
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
-   
+
   margin-top: 0;
   margin-bottom: 0;
   line-height: 40px;
@@ -137,14 +137,14 @@ body {
     width : 100%;
     border-radius: 5px;
     background-color: #f2f2f2;
-} 
+}
 
 .empData {
   width: 100%;
   table-layout: auto;
   align-items: all;
   padding: 15px;
-  align-content: space-around; 
+  align-content: space-around;
 }
 
 .projForm {

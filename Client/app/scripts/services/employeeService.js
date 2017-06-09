@@ -14,4 +14,14 @@ angular.module('rnaminventoryApp')
    {
      return $http.put('http://localhost:3000/employee',data);
    };
+
+   this.getEmpById = function(id)
+   {
+      return $http.get('http://localhost:3000/employee/'.concat(id));
+   };
+
+   this.saveEmployee = function(data)
+   {
+      return $http.post('http://localhost:3000/employee',data);
+   };
 }]);

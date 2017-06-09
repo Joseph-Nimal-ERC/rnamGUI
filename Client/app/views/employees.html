@@ -1,39 +1,79 @@
-<form ng-show="emp.formVisibility" ng-submit="">
+<form  ng-submit="">
 <div class="text_div" style="overflow-x:auto;">
-<table class="empData">
-<tr>
-  <td><span style="font-weight:bold;"> Signum :&nbsp</span></td>
-  <td><input type="text" name="name" value="" style="text-align: center; text-transform: uppercase;"></td>
-  <td><span style="font-weight:bold;"> Location :&nbsp</span></td>
-  <td><input type="text" name="location" value="" style="text-align: center; text-transform: uppercase;"></td>
-</tr>
+<table class="empData" ng-show="emp.formVisibility">
+  <tr>
+    <td><span style="font-weight:bold;"> Signum :&nbsp</span></td>
+    <td><input type="text" class="text_style" ng-model="emp.formData.signum" style="text-align: center; text-transform: uppercase;"></td>
+    <td><span style="font-weight:bold;"> Location :&nbsp</span></td>
+    <td><input type="text" ng-model="emp.formData.location" style="text-align: center; text-transform: uppercase;"></td>
+  </tr>
 <tr>
   <td><span style="font-weight:bold;"> Product :&nbsp</span></td>
-  <td><input type="text" name="product" value="" style="text-align: center; text-transform: uppercase;"></td>
+  <td><input type="text" ng-model="emp.formData.product" style="text-align: center; text-transform: uppercase;"></td>
   <td><span style="font-weight:bold;"> Business Areas :&nbsp</span></td>
-  <td><input type="text" name="businessArea" value="" style="text-align: center; text-transform: uppercase;"></td>
+  <td><input type="text" ng-model="emp.formData.businessArea" style="text-align: center; text-transform: uppercase;"></td>
 </tr>
 <tr>
   <td><span style="font-weight:bold;"> Team Name :&nbsp</span></td>
-  <td><input type="text" name="teamName" value="" style="text-align: center; text-transform: uppercase;"></td>
-</tr>
-<tr>
-  <td><span style="font-weight:bold;"> Project Name :&nbsp</span></td>
-  <td><input type="text" name="projName" value="" style="text-align: center; text-transform: uppercase;"></td>
-  <td><span style="font-weight:bold;"> Pool :&nbsp</span></td>
-  <td><input type="text" name="pool" value="" style="text-align: center; text-transform: uppercase;"></td>
+  <td><input type="text" ng-model="emp.formData.teamName" style="text-align: center; text-transform: uppercase;"></td>
 </tr>
 <tr>
   <td><span style="font-weight:bold;"> Status :&nbsp</span></td>
-  <td><input type="text" name="status" value="" style="text-align: center; text-transform: uppercase;"></td>
+  <td><input type="text" ng-model="emp.formData.mapping_dtls[0].status" style="text-align: center; text-transform: uppercase;"></td>
   <td><span style="font-weight:bold;"> CU :&nbsp</span></td>
-  <td><input type="text" name="CU" value="" style="text-align: center; text-transform: uppercase;"></td>
+  <td><input type="text" ng-model="emp.formData.mapping_dtls[0].CU" style="text-align: center; text-transform: uppercase;"></td>
+</tr>
+<tr>
+  <td><span style="font-weight:bold;"> Project Name :&nbsp</span></td>
+  <td><input type="text" ng-model="emp.formData.mapping_dtls[0].projId" style="text-align: center; text-transform: uppercase;"></td>
+  <td><span style="font-weight:bold;"> Pool :&nbsp</span></td>
+  <td><input type="text" ng-model="emp.formData.pool" style="text-align: center; text-transform: uppercase;"></td>
 </tr>
 <tr>
   <td><span style="font-weight:bold;"> EGI Line Manager :&nbsp</span></td>
-  <td><input type="text" name="egi_lm" value="" style="text-align: center; text-transform: uppercase;"></td>
+  <td><input type="text" ng-model="emp.formData.egiLineManager" style="text-align: center; text-transform: uppercase;"></td>
 </tr>
   </table>
+  <table class="empData" ng-show="emp.newEmployee">
+    <tr>
+      <td><span style="font-weight:bold;"> Signum :&nbsp</span></td>
+      <td><input type="text" class="text_style" ng-model="emp.formData.signum" style="text-align: center; text-transform: uppercase;"></td>
+      <td><span style="font-weight:bold;"> Name :&nbsp</span></td>
+      <td><input type="text" ng-model="emp.formData.location" style="text-align: center; text-transform: uppercase;"></td>
+    </tr>
+  <tr>
+    <td><span style="font-weight:bold;"> Product :&nbsp</span></td>
+    <td><input type="text" ng-model="emp.formData.product" style="text-align: center; text-transform: uppercase;"></td>
+    <td><span style="font-weight:bold;"> Business Areas :&nbsp</span></td>
+    <td><input type="text" ng-model="emp.formData.businessArea" style="text-align: center; text-transform: uppercase;"></td>
+  </tr>
+  <tr>
+    <td><span style="font-weight:bold;"> Team Name :&nbsp</span></td>
+    <td><input type="text" ng-model="emp.formData.teamName" style="text-align: center; text-transform: uppercase;"></td>
+  </tr>
+  <tr>
+    <td><span style="font-weight:bold;"> Status :&nbsp</span></td>
+    <td><input type="text" ng-model="emp.formData.mapping_dtls[0].status" style="text-align: center; text-transform: uppercase;"></td>
+    <td><span style="font-weight:bold;"> CU :&nbsp</span></td>
+    <td><input type="text" ng-model="emp.formData.mapping_dtls[0].CU" style="text-align: center; text-transform: uppercase;"></td>
+  </tr>
+  <tr>
+    <td><span style="font-weight:bold;"> Project Name :&nbsp</span></td>
+    <td><input type="text" ng-model="emp.formData.mapping_dtls[0].projId" style="text-align: center; text-transform: uppercase;"></td>
+    <td><span style="font-weight:bold;"> Pool :&nbsp</span></td>
+    <td><input type="text" ng-model="emp.formData.pool" style="text-align: center; text-transform: uppercase;"></td>
+  </tr>
+  <tr>
+    <td><span style="font-weight:bold;"> EGI Line Manager :&nbsp</span></td>
+    <td><input type="text" ng-model="emp.formData.egiLineManager" style="text-align: center; text-transform: uppercase;"></td>
+  </tr>
+  <tr>
+    <td><span style="font-weight:bold;"> Role :&nbsp</span></td>
+    <td><input type="text" ng-model="emp.formData.role" style="text-align: center; text-transform: uppercase;"></td>
+    <td><span style="font-weight:bold;"> Job_Stage :&nbsp</span></td>
+    <td><input type="text" ng-model="emp.formData.jobStage" style="text-align: center; text-transform: uppercase;"></td>
+  </tr>
+    </table>
   </div>
   <br>
 	<div>
@@ -56,8 +96,8 @@
     <input type="Submit"  id="Filter" value="GO" ng-click="proj.evaluateDate()" style="text-align: center; text-transform: uppercase;"/></td></tr></table>
 </div>
 <br>
-<button ng-show="emp.enablebutton" class="btn btn-primary btnCustom" ng-click="emp.edit()">Edit</button>
 <button ng-show="emp.enableShow" class="btn btn-primary btnCustom" ng-click="emp.show()">Show Details</button>
+<button ng-show="emp.enableShow" class="btn btn-primary btnCustom" ng-click="emp.assignProject()">Assign new project</button><br><br>
 <div ng-if="emp.gridOptions.data">
       <button class="btn btn-primary btnCustom" ng-click="emp.saveRows()">Save</button>
 </div>

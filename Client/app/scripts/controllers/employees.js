@@ -36,8 +36,8 @@ angular.module('rnaminventoryApp')
           title: 'Add Employee',
           action: function ($event) {
              emp.formData = {};
-             emp.formVisibility = true;
              emp.newEmployee = true;
+               emp.formVisibility = false;
           },
           order: 210
         }
@@ -61,25 +61,48 @@ angular.module('rnaminventoryApp')
                       console.log(row);
                       emp.enablebutton = true;
                       emp.enableShow= true;
-                    var  mySelections = gridApi.selection.getSelectedRows();
-                      console.log(mySelections);
-                      console.log(row.entity);
+                      employeeService.getEmpById(row.entity.employeeId)
+                      .then(function(response){
+                        emp.origFormData = response.data;
+                        emp.formData = Object.assign({}, emp.origFormData);
+
+                        }, function(error){
+                        console.log('Unable to load Employee data: ' + error.message);
+                      });
                     });
                 };
 
                 emp.show=function(){
                   emp.enableForm = true;
+                  emp.formVisibility = true;
+                    emp.newEmployee = false;
+                };
+
+                emp.cancel = function(){
+                  emp.formData = emp.origFormData = {};
+                  emp.formVisibility = false;
+                  emp.newEmployee = false;
+                };
+                emp.reset = function(){
+                  console.log(emp.origFormData);
+                  emp.formData = Object.assign({}, emp.origFormData);
                 };
 
 
-                emp.edit=function(){
-                  emp.gridOptions.enableCellEdit=true;
-                };
-
-                emp.cancel=function(){
-  					emp.enableForm = false;
-    			};
-
+          emp.assignProject = function(){
+            var row = emp.gridApi.selection.getSelectedRows();
+            console.log(row);
+            emp.gridOptions.data.push({
+              'name': row[0].name,
+              'signum' : row[0].signum,
+              'projId' :row[0].projId,
+              'role':row[0].role,
+              'jobStage' : row[0].jobStage,
+              'type' :row[0].type,
+              'personnelNo' : row[0].personnelNo,
+              'status' :row[0].status
+            });
+          };
           emp.saveRows = function(){
             var dirty = emp.gridApi.rowEdit.getDirtyRows(emp.gridApi.grid);
             var dataDirtyRows = dirty.map(function (gridRow) {
@@ -113,8 +136,39 @@ angular.module('rnaminventoryApp')
                 console.log('Unable to update Employee utilization data: ' + error.message);
               });
             }
-          }
+          };
 
+          emp.save = function(){
+
+          if(emp.newEmployee){
+            employeeService.saveEmployee(emp.formData)
+              .then(function(response){
+                var id = response.data._id;
+                emp.dataToSave.push(id)
+                console.log("Employee persisted");
+                emp.gridOptions.data.push({
+                  'EmployeeId': id,
+                  'signum' : response.data.signum
+                });
+                emp.newEployee = false;
+              }, function(error){
+                console.log("Error saving new Employee");
+              });
+
+          }
+          else if(!employeeClientService.checkForChange(emp.origFormData, emp.formData)){
+            employeeService.updateEmployees(emp.formData)
+              .then(function(response){
+                console.log("Employee Updated");
+              }, function(error){
+                console.log("Error while updating Employee");
+              })
+
+          }
+          else {
+            console.log("Nothing to save or update");
+          }
+        };
 
         employeeService.getEmployees()
         .then(function (response) {
@@ -123,7 +177,7 @@ angular.module('rnaminventoryApp')
             emp.gridOptions.columnDefs = employeeClientService.getColumnDefs(gridData[0]);
             emp.gridOptions.data = gridData;
             }, function (error) {
-                console.log('Unable to load projects data: ' + error.message);
+                console.log('Unable to load Employee data: ' + error.message);
             });
 
             employeeService.getProjectName()
