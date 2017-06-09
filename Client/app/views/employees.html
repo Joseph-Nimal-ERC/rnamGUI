@@ -1,4 +1,4 @@
-<form  ng-submit="">
+<form  ng-show="emp.formVisibility" ng-submit="">
 <div class="text_div" style="overflow-x:auto;">
 <table class="empData" ng-show="emp.formVisibility">
   <tr>
@@ -34,6 +34,16 @@
   <td><input type="text" ng-model="emp.formData.egiLineManager" style="text-align: center; text-transform: uppercase;"></td>
 </tr>
   </table>
+  </div>
+  <br>
+	<div>
+  	<button class="btn btn-primary btnCustom" ng-click="emp.save()">Save</button>
+  	<button class="btn btn-primary btnCustom" ng-click="emp.reset()">Reset</button>
+	<button class="btn btn-primary btnCustom" ng-click="emp.cancel()">Cancel</button>
+  </div>
+</form>
+<form ng-show="emp.newEmployee" ng-submit="">
+  <div class="text_div">
   <table class="empData" ng-show="emp.newEmployee">
     <tr>
       <td><span style="font-weight:bold;"> Signum :&nbsp</span></td>
@@ -76,10 +86,9 @@
     </table>
   </div>
   <br>
-	<div>
-  	<button class="btn btn-primary btnCustom" ng-click="emp.save()">Save</button>
-  	<button class="btn btn-primary btnCustom" ng-click="emp.reset()">Reset</button>
-	<button class="btn btn-primary btnCustom" ng-click="emp.cancel()">Cancel</button>
+  <div>
+    <button class="btn btn-primary btnCustom" ng-click="emp.save()">Save</button>
+  <button class="btn btn-primary btnCustom" ng-click="emp.cancel()">Cancel</button>
   </div>
 </form>
 <br>
