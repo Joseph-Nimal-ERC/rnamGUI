@@ -11,6 +11,13 @@ router.get('/', function(req, res, next) {
   });
 });
 
+/* Get all projectName details */
+router.get('/getProjectsName', function(req, res, next) {
+  Project.find({},{"projName":1},function (err, project) {
+    if (err) return next(err);
+    res.json(project);
+  });
+});
 /* Get specific project details */
 router.get('/:id', function(req, res, next) {
   Project.findById(req.params.id, function (err, project) {
