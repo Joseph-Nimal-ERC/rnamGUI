@@ -8,19 +8,19 @@
       </tr>
       <tr>
       	  <td><span style="font-weight:bold;"> Prob of Deal :&nbsp</span></td>
-          <td><input type="text" ng-model="proj.formData.probOfDeal"></td>
+          <td><input type="text" ng-model="proj.formData.probOfDeal" style="text-align: center;"></td>
       </tr>
       <tr>
-          <td><span style="font-weight:bold;"> RNAM Mgr :&nbsp</span></td>
+          <td><span style="font-weight:bold;"> MANA Mgr :&nbsp</span></td>
           <td><select style="width: 174px; height: 25px" ng-init = "proj.managerName.value" ng-model="proj.managerName.value" ng-options="v for v in proj.managerName.values"></select></td>
           </tr>
       <tr>
-          <td><span style="font-weight:bold;"> RNAM Director :&nbsp</span></td>
+          <td><span style="font-weight:bold;"> MANA Director :&nbsp</span></td>
           <td><select style="width: 174px; height: 25px" ng-init = "proj.directorName.value" ng-model="proj.directorName.value" ng-options="v for v in proj.directorName.values"></select></td>
           </tr>
       <tr>
           <td><span style="font-weight:bold;"> Status :&nbsp</span></td>
-          <td><input type="text" ng-model="proj.formData.status" style="text-align: center;"></td>
+          <td><select style="width: 174px; height: 25px;" ng-init = "proj.projStatus.value" ng-model="proj.projStatus.value" ng-options="v for v in proj.projStatus.values" style="text-align: center;"></select></td>
           </tr>
       <tr>
           <td><span style="font-weight:bold;"> EGI Staffing :&nbsp</span></td>

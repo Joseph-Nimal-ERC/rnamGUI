@@ -149,6 +149,8 @@ body {
 
 .projForm {
   display: inline-block;
+  align-items: center;
+  text-align: center;
 }
 
 td:hover {background-color: #f5f5f5}

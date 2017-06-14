@@ -16,15 +16,21 @@ angular.module('rnaminventoryApp')
           {
             'field': 'signum',
             'name': 'signum',
-              'enableCellEdit' : false,
+              'enableCellEdit' :true,
             'minWidth': 50
           },
         {
             'field': 'projId',
             'name': 'Project',
             'enableCellEdit' : true,
-            'minWidth': 50
-        },
+            'minWidth': 50,
+            'cellFilter': 'mapProject',
+            'editDropdownValueLabel': 'project',
+            'editDropdownOptionsArray': [
+             { 'id': 1, 'project': 'Project1' },
+             { 'id': 2, 'project': 'project2' }
+           ] 
+		}, 
         {
           'field': 'role',
           'name': 'Role',

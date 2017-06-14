@@ -44,4 +44,19 @@ angular
         redirectTo: '/'
       });
   })
-  .constant('_', window._);
+  .constant('_', window._)
+  .filter('mapProject', function() {
+  var projectHash = {
+    1: 'Project1',
+    2: 'Project2'
+  };
+
+  return function(input) {
+    if (!input){
+      return '';
+    } else {
+      return projectHash[input];
+    }
+  };
+}); 
+

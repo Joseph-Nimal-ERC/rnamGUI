@@ -12,7 +12,7 @@ angular.module('rnaminventoryApp')
    };
    this.updateEmployees=function(data)
    {
-     return $http.put('http://localhost:3000/employee',data);
+     return $http.put('http://localhost:3000/employee/updateEmployees',data);
    };
 
    this.getEmpById = function(id)

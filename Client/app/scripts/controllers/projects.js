@@ -46,6 +46,7 @@ angular.module('rnaminventoryApp')
                 console.log(proj.managerName.value);
                 proj.directorName.value = proj.formData.director;
                 console.log(proj.directorName.value);
+                proj.projStatus.value = proj.formData.status;
               }, function(error){
                 console.log('Unable to load project data: ' + error.message);
               });
@@ -177,6 +178,11 @@ angular.module('rnaminventoryApp')
                 "name": "Director",
                 "value": null, 
                 "values": proj.directorList 
+            };
+                proj.projStatus = { "type": "select", 
+                "name": "ProjectStatus",
+                "value": null, 
+                "values": [ "Committed", "Pre-Sales", "Forecasted"] 
             };
                 proj.egiLM = response.data[0].egiLM;
             }, function (error) {

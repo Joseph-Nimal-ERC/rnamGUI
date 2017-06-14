@@ -11,6 +11,7 @@ angular.module('rnaminventoryApp')
   .controller('EmployeesCtrl',['employeeService', 'employeeClientService', 'uiGridConstants', function (employeeService, employeeClientService, uiGridConstants) {
   	console.log(employeeService);
   	var emp = this;
+     emp.formData = [];
 
     emp.enablebutton = false;
     emp.enableShow= false;
@@ -35,7 +36,7 @@ angular.module('rnaminventoryApp')
         {
           title: 'Add Employee',
           action: function ($event) {
-             emp.formData = {};
+             emp.formData = [];
              emp.newEmployee = true;
                emp.formVisibility = false;
           },
@@ -61,14 +62,18 @@ angular.module('rnaminventoryApp')
                       console.log(row);
                       emp.enablebutton = true;
                       emp.enableShow= true;
-                      employeeService.getEmpById(row.entity.employeeId)
+                        emp.origFormData = row.entity;
+                        console.log(row.entity);
+                         emp.formData[0] = Object.assign({}, emp.origFormData);
+                      //   emp.formData =  emp.formData1[0];
+                    /*  employeeService.getEmpById(row.entity.employeeId)
                       .then(function(response){
                         emp.origFormData = response.data;
                         emp.formData = Object.assign({}, emp.origFormData);
 
                         }, function(error){
                         console.log('Unable to load Employee data: ' + error.message);
-                      });
+                      });*/
                     });
                 };
 
@@ -157,7 +162,9 @@ angular.module('rnaminventoryApp')
 
           }
           else if(!employeeClientService.checkForChange(emp.origFormData, emp.formData)){
-            employeeService.updateEmployees(emp.formData)
+                         console.log(emp.formData);
+             var serverRows = employeeClientService.getGridDataForServer(emp.formData);
+            employeeService.updateEmployees(serverRows)
               .then(function(response){
                 console.log("Employee Updated");
               }, function(error){

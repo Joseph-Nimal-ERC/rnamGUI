@@ -36,7 +36,7 @@ router.post('/', function(req, res, next) {
 });
 
 /* Update existing Employee entry */
-router.put('/', function(req, res, next) {
+router.put('/updateEmployees', function(req, res, next) {
 	for(var key in req.body){
 		var reqBody = req.body[key];
 		//console.log(reqBody._id);
