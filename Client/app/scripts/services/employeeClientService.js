@@ -24,6 +24,7 @@ angular.module('rnaminventoryApp')
             'name': 'Project',
             'enableCellEdit' : true,
             'minWidth': 50,
+            'editableCellTemplate': 'ui-grid/dropdownEditor',
             'cellFilter': 'mapProject',
             'editDropdownValueLabel': 'project',
             'editDropdownOptionsArray': [
